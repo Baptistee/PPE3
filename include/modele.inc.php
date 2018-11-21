@@ -1,7 +1,5 @@
 <?php
 
-// test 
-
 class PdoGsb {
 
     // Attributs
