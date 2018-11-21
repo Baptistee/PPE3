@@ -50,7 +50,7 @@
 
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#"><?=$valeur["AC_LIEU"]?></a>
+                            <a class="nav-link active"><?=$valeur["AC_LIEU"]?></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active"><?=$valeur["AC_DATE"]?></a>

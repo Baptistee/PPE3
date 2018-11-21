@@ -1,35 +1,35 @@
 
 <div id="menuGauche">
-        <ul id="menuList">
-			<li >
-				 Bienvenue :<br>
-				<?php echo $_SESSION['prenom']."  ".$_SESSION['nom']  ?>
+    <ul id="menuList">
+		<li >
+			Bienvenue :<br>
+			<?php echo $_SESSION['prenom']."  ".$_SESSION['nom']  ?>
 			</li>
             <li class="smenu">
-                   Comptes rendus 
-           </li> 
+                   Comptes rendus
+           </li>
            <li class="smenu">
 		   <ul>
               <a href="index.php?uc=gererCR&action=saisirCR" title="Nouveaux comptes rendus">Nouveaux</a>
-			  
-           </ul>         
+
+           </ul>
 		   <ul>
               <a href="index.php?uc=gererCR&action=consulterCR" title="Consulter les comptes rendus">Consulter</a>
 			  </ul>
            </li>
-		 
+
            <li class="smenu">
               <a href="index.php?uc=medicament&action=liste" title="Les médicaments">Médicaments</a>
-           </li>             
+           </li>
            </li>
       <li class="smenu">
-                   Praticien 
-           </li> 
+                   Praticien
+           </li>
            <li class="smenu">
 		   <ul>
               <a href="index.php?uc=praticien&action=saisir" title="Nouveaux comptes rendus">Nouveaux</a>
-			  
-           </ul>         
+
+           </ul>
 		   <ul>
               <a href="index.php?uc=praticien&action=consulter" title="Consulter les comptes rendus">Consulter</a>
 			  </ul>
@@ -47,8 +47,7 @@
                 </ul>
             </li>
            <li class="smenu">
-              <a href="index.php?uc=connexion&action=deconnexion" title="Se déconnecter">Déconnexion</a>
-           </li>
-         </ul>
-        
-    </div>
+        <a href="index.php?uc=connexion&action=deconnexion" title="Se déconnecter">Déconnexion</a>
+        </li>
+    </ul>
+</div>

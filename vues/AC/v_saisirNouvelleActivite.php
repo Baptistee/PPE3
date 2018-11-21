@@ -22,7 +22,7 @@
                     </div>
                     <input name="AC_JOUR" class="form-control" placeholder="Jour" type="text">
                     <select name="AC_MOIS" class="custom-select" style="max-width: 120px;">
-                        <option selected="01" value="01">Janvier</option>
+                        <option selected value="01">Janvier</option>
                         <option value="02">Février</option>
                         <option value="03">Mars</option>
                         <option value="04">Avril</option>
@@ -54,11 +54,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fas fa-comment"></i> </span>
                     </div>
-                    <input name="motif" class="form-control" placeholder="Motif" type="text">
+                    <textarea name="motif" class="form-control" placeholder="Motif" type="text"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Create Account </button>
+                    <button type="submit" class="btn btn-primary btn-block"> Ajouter </button>
                 </div>
 
                 <p class="text-center">Vous serrez automatiquement enregistré comme créateur de la nouvelle activité. <a href=""><?=$_SESSION['nom']?> <?=$_SESSION['prenom']?></a> </p>

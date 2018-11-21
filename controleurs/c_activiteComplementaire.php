@@ -18,8 +18,8 @@ switch ($_GET["action"]) {
 
     case "ajouterPraticienDansAC":
 
-        $lesAC = $pdo->getLesAC();
-        $lesPraticiens = $pdo->getLesPraticiens();
+        $lesAC = $pdo->getLesACDuVisiteur($_SESSION['vis_matricule']);
+        $lesPraticiens = $pdo->getLesPraticiensPasInvite();
 
         include("vues/AC/v_ajouterPraticienDansAC.php");break;
 
@@ -28,7 +28,7 @@ switch ($_GET["action"]) {
 
         $pdo->AjouterPraticienDansAC($_POST["numAC"], $_POST["numPraticien"], $_POST["spe"]);
         $lesAC = $pdo->getLesACDuVisiteur($_SESSION['vis_matricule']);
-        $lesPraticiens = $pdo->getLesPraticiens();
+        $lesPraticiens = $pdo->getLesPraticiensPasInvite();
 
         include("vues/AC/v_ajouterPraticienDansAC.php");break;
 

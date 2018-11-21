@@ -121,6 +121,29 @@ class PdoGsb {
 */
 
 
+
+    // Recup les praticiens pas deja invites.
+    public function getLesPraticiensPasInvite() {
+        try {
+            $req="SELECT praticien.PRA_NUM, PRA_NOM, PRA_PRENOM FROM praticien WHERE praticien.PRA_NUM NOT IN (SELECT inviter.PRA_NUM FROM inviter)";
+            $rs = PdoGsb::$monPdo->query($req);
+    		$ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+    		return $ligne;
+        }
+
+        catch (Exception $ex) {
+            ?>
+                <div class="contenu">
+                    <div class="alert alert-danger">
+                        <h6>Erreur requete de fonction "getLesPraticiensPasInvite"!</h6>
+                        <h6><?=$ex->getMessage();?></h6>
+                    </div>
+                </div>
+            <?php
+        }
+    }
+
+
     // Permet d'ajouter une activite complementaire.
     public function InsererActivite($jour, $mois, $annee, $lieu, $theme, $motif, $resp) {
         try {
@@ -135,6 +158,7 @@ class PdoGsb {
             $res->bindValue(':resp', $resp, PDO::PARAM_STR);
             $res->execute();
         }
+
         catch (Exception $ex) {
             ?>
                 <div class="contenu">
@@ -176,7 +200,7 @@ class PdoGsb {
 
     // Permet de recuperer les AC crees par le visiteur
     public function getLesACDuVisiteur($mat) {
-        $req = "select AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF from activite_compl, visiteur where AC_RESPONSABLE = :mat group by AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF"; // probleme enlever group by corriger plusieurs retour.
+        $req = "SELECT AC_NUM, AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF FROM activite_compl, visiteur WHERE AC_RESPONSABLE = :mat GROUP BY AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF"; // probleme enlever group by corriger plusieurs retour.
         $rs = PdoGsb::$monPdo->prepare($req);
         $rs->bindValue(':mat', $mat, PDO::PARAM_STR);
         $rs->execute();
