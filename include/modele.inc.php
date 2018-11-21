@@ -109,20 +109,6 @@ class PdoGsb {
     }
 
 
-  public function ObtenirListeMedicament() {
-    $req="select MED_DEPOTLEGAL, MED_NOMCOMMERCIAL, medicament.FAM_CODE as Fam_code , FAM_LIBELLE, MED_PRIXECHANTILLON from medicament, famille where medicament.FAM_CODE = famille.FAM_CODE";
-    $rs = PdoGsb::$monPdo->query($req);
-    $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
-    return $ligne;
-  }
-
-
-  public function ObtenirDetailMedicament($id) {
-    $req="select * from medicament where MED_DEPOTLEGAL = :pid ";
-    $prep= PdoGsb::$monPdo->prepare($req);
-    $prep->execute(array('pid' => $id));
-    return $prep->fetch(PDO::FETCH_ASSOC);
-  }
 
 
   public function getCR(){
@@ -156,7 +142,7 @@ class PdoGsb {
 
 /*
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - BAPTISTE - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - - - - - - BAPTISTE  - - - - - - - - - - - - - - - - - - -
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
@@ -231,6 +217,34 @@ class PdoGsb {
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
+
+/*
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - - - - - - COP1 le bg  - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+
+    public function ObtenirListeMedicament() {
+        $req="select MED_DEPOTLEGAL, MED_NOMCOMMERCIAL, medicament.FAM_CODE as Fam_code , FAM_LIBELLE, MED_PRIXECHANTILLON from medicament, famille where medicament.FAM_CODE = famille.FAM_CODE";
+        $rs = PdoGsb::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+
+
+    public function ObtenirDetailMedicament($id) {
+        $req="select * from medicament where MED_DEPOTLEGAL = :pid ";
+        $prep= PdoGsb::$monPdo->prepare($req);
+        $prep->execute(array('pid' => $id));
+        return $prep->fetch(PDO::FETCH_ASSOC);
+    }
+
+
+/*
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - - - - - - COP1 le bg  - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
 }
 
 ?>
