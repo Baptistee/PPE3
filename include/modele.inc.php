@@ -111,33 +111,7 @@ class PdoGsb {
 
 
 
-  public function getCR(){
-    $req="select * from rapport_visite";
-    $res = PdoGsb::$monPdo->query($req);
 
-    $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
-    return $ligne;
-  }
-
-
-  public function ajouterCR($numV, $numR, $numP, $bilan, $motif, $dateV, $rempl){
-    try {
-      $req="INSERT INTO rapport_visite (VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL) VALUES (:numV, :numR, :numP, :bilan, :motif, :dateV, :rempl)";
-      $res=PdoGsb::$monPdo->prepare($req);
-
-      $res->bindValue(':numV', $numV, PDO::PARAM_STR);
-      $res->bindValue(':numR', $numR, PDO::PARAM_INT);
-      $res->bindValue(':numP', $numP, PDO::PARAM_INT);
-      $res->bindValue(':bilan', $bilan, PDO::PARAM_STR);
-      $res->bindValue(':motif', $motif, PDO::PARAM_STR);
-      $res->bindValue(':dateV', $dateV, PDO::PARAM_STR);
-      $res->bindValue(':rempl', $rempl, PDO::PARAM_INT);
-      $res->execute();
-    }
-    catch (Exception $ex) {
-      $ex->getMessage();
-    }
-  }
 
 
 /*
@@ -249,15 +223,41 @@ class PdoGsb {
 
 /*
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - LOLO  - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - - - - - - LOLO LE COCO  - - - - - - - - - - - - - - - - - - -
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
-//met tes fonctions ici
+public function getCR(){
+    $req="select * from rapport_visite";
+    $res = PdoGsb::$monPdo->query($req);
+
+    $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
+    return $ligne;
+}
+
+
+public function ajouterCR($numV, $numR, $numP, $bilan, $motif, $dateV, $rempl){
+    try {
+        $req="INSERT INTO rapport_visite (VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL) VALUES (:numV, :numR, :numP, :bilan, :motif, :dateV, :rempl)";
+        $res=PdoGsb::$monPdo->prepare($req);
+
+        $res->bindValue(':numV', $numV, PDO::PARAM_STR);
+        $res->bindValue(':numR', $numR, PDO::PARAM_INT);
+        $res->bindValue(':numP', $numP, PDO::PARAM_INT);
+        $res->bindValue(':bilan', $bilan, PDO::PARAM_STR);
+        $res->bindValue(':motif', $motif, PDO::PARAM_STR);
+        $res->bindValue(':dateV', $dateV, PDO::PARAM_STR);
+        $res->bindValue(':rempl', $rempl, PDO::PARAM_INT);
+        $res->execute();
+    }
+    catch (Exception $ex) {
+            $ex->getMessage();
+  }
+}
 
 /*
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - LOLO  - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - - - - - - LOLO L'OPOSSUM  - - - - - - - - - - - - - - - - - - -
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 }
