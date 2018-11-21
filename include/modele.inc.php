@@ -11,6 +11,16 @@ class PdoGsb {
 	private static $monPdoGsb=null;
 
 
+    /* BDD EN LIGNE
+    private static $serveur='mysql:host=www.db4free.net';
+    private static $bdd='dbname=gsb_visiteurs';
+    private static $user='sql7266501' ;
+    private static $mdp='w4dn1WGxkf' ;
+    private static $monPdo;
+	private static $monPdoGsb=null;
+    */
+
+
     // Methodes
 	private function __construct() {
         try {
