@@ -4,12 +4,12 @@ include("vues/v_sommaire.php");
 $idVisiteur = $_SESSION['vis_matricule'];
 switch($_GET['action']){
         case 'saisirCR':{
-            include('vues/v_isexe papy.php');
+            include('vues/CR/v_insererCompte.php');
             break;
         }
 
         case 'consulterCR':{
-        include('vues/v_insererCompte.php');
+        include('vues/CR/v_insererCompte.php');
         break;
         }
 
