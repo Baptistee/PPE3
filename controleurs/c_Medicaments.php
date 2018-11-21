@@ -7,7 +7,7 @@ if(!isset($_REQUEST['action'])){
 $action = $_REQUEST['action'];
 switch($action){
     case 'liste':{
-        $LesMedicaments = $pdo->ObtenirListeMedicament();
+        $LesMedicaments = $pdo->GetListeMedicament();
 
         include("vues/Medicaments/v_MedicamentListe.php");
         break;
@@ -15,7 +15,7 @@ switch($action){
     case 'detail':{
         $id =  $_REQUEST['id'];
         settype($id, "string");
-        $unMedicament = $pdo->ObtenirDetailMedicament($id);
+        $unMedicament = $pdo->GetDetailMedicament($id);
         include("vues/Medicaments/v_MedicamentDetail.php");
         break;
     }
