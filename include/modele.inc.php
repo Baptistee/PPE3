@@ -119,11 +119,6 @@ class PdoGsb {
     }
 
 
-
-
-
-
-
 /*
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  - - - - - - - - - - - - - - BAPTISTE  - - - - - - - - - - - - - - - - - - -
@@ -133,11 +128,16 @@ class PdoGsb {
 
 
     // Recup les praticiens pas deja invites.
-    public function getLesPraticiensPasInvite() {
+    public function getLesPraticiensPasInvite($activite) {
         try {
-            $req="SELECT praticien.PRA_NUM, PRA_NOM, PRA_PRENOM FROM praticien WHERE praticien.PRA_NUM NOT IN (SELECT inviter.PRA_NUM FROM inviter)";
-            $rs = PdoGsb::$monPdo->query($req);
-    		$ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+            $activite = (int)$activite;
+            $req="SELECT praticien.PRA_NUM, PRA_NOM, PRA_PRENOM FROM praticien WHERE praticien.PRA_NUM NOT IN (SELECT inviter.PRA_NUM FROM inviter INNER JOIN activite_compl ON inviter.AC_NUM=activite_compl.AC_NUM WHERE activite_compl.AC_NUM=:activite) ORDER BY PRA_NOM";
+            $res=PdoGsb::$monPdo->prepare($req);
+
+            $res->bindValue(':activite', $activite, PDO::PARAM_INT);
+            $res->execute();
+
+            $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
     		return $ligne;
         }
 
