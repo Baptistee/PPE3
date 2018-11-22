@@ -23,13 +23,7 @@
     <?php endforeach; ?>
     </select>
     <br/>
-
-
-
         </tr>
-
-
-
         <!-- Coefficient -->
     <label for="Coefficient">Coefficient:</label>
     <input class="form-control" type="text" id="Coefficient">
