@@ -1,10 +1,10 @@
 
 <br>
 
-<div class="card mx-auto">
-    <div class="card-header text-center">Tableau des activités complémentaires</div>
-    <br>
+<div class="card mx-auto w-50" style="max-width: 750px;">
+    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Tableau des activités complémentaires</h4></div>
     <div class="card-body">
+        <article class="card-body mx-auto" style="max-width: 700px;">
         <table id="tableau" class="table text-center table-striped table-bordered" style="width: 100%">
 
             <thead>
