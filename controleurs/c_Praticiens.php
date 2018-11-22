@@ -1,21 +1,26 @@
 <?php
-include("vues/v_sommaire.php");
+include("vues/NavBar/v_NavBar.php");
 switch ($_GET["action"]) {
     case "saisir":
+       
         if(isset($_POST["notePraticien"])){
-         $pdo->insertPraticien($_POST["numPraticien"],$_POST["nomPraticien"],$_POST["prenomPraticien"],$_POST["adressePraticien"],$_POST["cpPraticien"],$_POST["villePraticien"],$_POST["notePraticien"]);
-        }
-        include 'vues/v_saisirPraticiens.php';
+             var_dump($_POST["codePraticien"]);
+         $pdo->insertPraticien($_POST["nomPraticien"],$_POST["prenomPraticien"],$_POST["adressePraticien"],$_POST["cpPraticien"],$_POST["villePraticien"],$_POST["notePraticien"],$_POST["codePraticien"]);
+           
+         }
+      
+        $lesTypesPraticiens = $pdo->getTypePraticiens();
+        
+        include 'vues/praticiens/v_saisirPraticiens.php';
     break;
     
     case 'consulter' :
-        $page = (!empty($_GET['page']) ? $_GET['page'] : 2);
-    
-        $lesPraticiens = $pdo->consulterPraticien($page);
-    
-        
 
-        include 'vues/v_consulterPraticien.php';
+        
+        $lesPraticiens = $pdo->getLesPraticiens();
+    
+
+        include 'vues/praticiens/v_consulterPraticien.php';
     break;
 }
 ?>

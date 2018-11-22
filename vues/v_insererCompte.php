@@ -1,12 +1,9 @@
-<form method="post" action="http://172.20.201.201/slamg3/GSB_Visites/index.php?uc=gererCR&action=saisir">
+<form method="post">
   <div class="form-group row">
   <div class="col-10">
       
-      <?php var_dump($_SESSION['vis_matricule']);?>
-      
       <h3>Rapport de visite:</h3>
       <!-- Numéro -->
-      
   <label for="num" class="col-2 col-form-label">Numéro:</label>
     <input class="form-control" type="text" id="num">
     
@@ -76,8 +73,6 @@
     <select class="form-control" id="prod">
         <option>cc</option>
     </select>
-    
-    <button class="btn btn-primary" style="padding: 10px;">Valider</button>
   </div>
   </div>
 </form>

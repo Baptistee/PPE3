@@ -1,10 +1,13 @@
-?<div class="container">
+﻿<div id="contenu">
       <h2>Saisir praticien</h2>
 
 
 <form method="POST" action="index.php?uc=praticien&action=saisir">
- 
      <div class="form-group">
+        <label>Num</label>
+        <input class="form-control" type="text" name="numPraticien">
+    </div>  
+    <div class="form-group">
         <label>Nom</label>
         <input class="form-control" type="text" name="nomPraticien">
     </div>    

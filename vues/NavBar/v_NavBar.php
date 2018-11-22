@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: royalblue">
   <a class="navbar-brand" href="#">
     <img src="./images/logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
     Galaxy Swiss Bourdin

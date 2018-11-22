@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/baptiste.blanchet/PPE3/include/modele.inc.php</file>
-            <file>file:/C:/Users/baptiste.blanchet/PPE3/controleurs/c_activiteComplementaire.php</file>
+            <file>file:/Z:/PPE3/Site/vues/CR/v_insererCompte.php</file>
+            <file>file:/Z:/PPE3/Site/controleurs/c_CompteRendu.php</file>
+            <file>file:/Z:/PPE3/Site/controleurs/c_Praticiens.php</file>
+            <file>file:/Z:/PPE3/Site/index.php</file>
+            <file>file:/Z:/PPE3/Site/include/modele.inc.php</file>
         </group>
     </open-files>
 </project-private>

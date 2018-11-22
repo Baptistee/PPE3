@@ -1,5 +1,5 @@
 <?php
-include("vues/v_sommaire.php");
+include("vues/NavBar/v_NavBar.php");
 
 if(!isset($_REQUEST['action'])){
     $_REQUEST['action']='liste';
@@ -15,7 +15,7 @@ switch($action){
     case 'detail':{
         $id =  $_REQUEST['id'];
         settype($id, "string");
-        $unMedicament = $pdo->GetDetailMedicament($id);
+        $unMedicament = $pdo->ObtenirDetailMedicament($id);
         include("vues/Medicaments/v_MedicamentDetail.php");
         break;
     }

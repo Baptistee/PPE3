@@ -1,4 +1,3 @@
-
 <ul>
 <?php
 	  $nom =  $_SESSION['nom'];

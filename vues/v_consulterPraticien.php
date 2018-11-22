@@ -10,7 +10,6 @@
       <th scope="col">Code postal</th>
       <th scope="col">Ville</th>
       <th scope="col">Coef notoriete</th>
-      <th scope="col">Type de praticien</th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +22,6 @@
           <td><?=$value["PRA_CP"]?></td>
           <td><?=$value["PRA_VILLE"]?></td>
           <td><?=$value["PRA_COEFNOTORIETE"]?></td>
-          <td><?=$value["TYP_CODE"]?></td>
           
         </tr>
        <?php endforeach; ?>

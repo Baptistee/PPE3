@@ -1,8 +1,10 @@
 <?php
+session_start();
 require_once("include/fct.inc.php");
 require_once ("include/modele.inc.php");
 include("vues/v_entete.php") ;
-session_start();
+
+
 $pdo = PdoGsb::getPdoGsb();
 
 if(!isset($_REQUEST['uc']) || (!isset($_SESSION['login']))){
@@ -28,6 +30,13 @@ switch($uc){
         case 'activiteComplementaire':{
             include("controleurs/c_activiteComplementaire.php");break;
         }
+        case'accueil':{
+            include("vues/v_accueil.php");break;
+}
+        case'aurevoir':{
+            include("vues/v_deconnexion");break;            
+        }
+        
 }
 include("vues/v_pied.php") ;
 ?>

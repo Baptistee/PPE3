@@ -1,4 +1,5 @@
 ﻿<?php
+
 if(!isset($_REQUEST['action'])){
 	$_REQUEST['action'] = 'demandeConnexion';
 }
@@ -25,14 +26,16 @@ switch($action){
 			$_SESSION['vis_matricule']= $id;
                         $_SESSION['nom']= $nom;
                         $_SESSION['prenom']= $prenom;
-                        include("vues/v_sommaire.php");
+                        include("vues/NavBar/v_NavBar.php");
+
+                        include('vues/v_accueil.php');
 			}
 		break;
 	}
-        case 'deconnexion':{           
-            include("vues/v_deconnexion.php");
-            include("vues/v_connexion.php");
-            break;
+        case 'deconnexion':{   
+                session_unset();
+                session_destroy();                            
+            
         }
 	default :{
 		include("vues/v_connexion.php");
