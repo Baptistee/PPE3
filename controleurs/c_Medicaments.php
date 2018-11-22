@@ -15,7 +15,7 @@ switch($action){
     case 'detail':{
         $id =  $_REQUEST['id'];
         settype($id, "string");
-        $unMedicament = $pdo->ObtenirDetailMedicament($id);
+        $unMedicament = $pdo->GetDetailMedicament($id);
         include("vues/Medicaments/v_MedicamentDetail.php");
         break;
     }
