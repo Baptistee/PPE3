@@ -131,11 +131,7 @@ class PdoGsb {
     public function getLesPraticiensPasInvite($activite) {
         try {
             $activite = (int)$activite;
-<<<<<<< HEAD
             $req="SELECT praticien.PRA_NUM, PRA_NOM, PRA_PRENOM FROM praticien WHERE praticien.PRA_NUM NOT IN (SELECT inviter.PRA_NUM FROM inviter INNER JOIN activite_compl ON inviter.AC_NUM=activite_compl.AC_NUM WHERE activite_compl.AC_NUM=:activite) ORDER BY PRA_NOM";
-=======
-            $req="SELECT praticien.PRA_NUM, PRA_NOM, PRA_PRENOM FROM praticien WHERE praticien.PRA_NUM NOT IN (SELECT inviter.PRA_NUM FROM inviter INNER JOIN activite_compl ON inviter.AC_NUM=activite_compl.AC_NUM WHERE activite_compl.AC_NUM=:activite)";
->>>>>>> 9ec6a4caa8fd37f2bc919cd3ac46b485a803e7d3
             $res=PdoGsb::$monPdo->prepare($req);
 
             $res->bindValue(':activite', $activite, PDO::PARAM_INT);
