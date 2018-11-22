@@ -1,20 +1,20 @@
 <form method="post" action="http://172.20.201.201/slamg3/GSB_Visites/index.php?uc=gererCR&action=saisir">
   <div class="form-group row">
   <div class="col-10">
-      
+
       <?php var_dump($_SESSION['vis_matricule']);?>
-      
+
       <h3>Rapport de visite:</h3>
-      <!-- Numéro -->
-      
-  <label for="num" class="col-2 col-form-label">Numéro:</label>
-    <input class="form-control" type="text" id="num">
-    
+      <!-- Numéro du visiteur-->
+
+  <!--<label for="num" class="col-2 col-form-label">Numéro:</label>
+    <input class="form-control" type="text" id="num">-->
+
     <!-- Date Visite-->
     <label for="date" class="col-2 col-form-label">Date Visite:</label>
     <input class="form-control" type="date" id="date">
     <br/>
-    
+
     <!-- Praticien -->
     <label for="Praticien">Praticien:</label>
     <select class="form-control" id="Praticien">
@@ -23,18 +23,18 @@
     <?php endforeach; ?>
     </select>
     <br/>
-    
-    
-     
+
+
+
         </tr>
-       
-    
-    
+
+
+
         <!-- Coefficient -->
     <label for="Coefficient">Coefficient:</label>
     <input class="form-control" type="text" id="Coefficient">
     <br/>
-    
+
     <!-- Ramplacant -->
     <label for="Remplacant">Remplacant:</label>
     <!--<select class="form-control" id="Remplacant">
@@ -42,18 +42,18 @@
     </select>-->
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <br/>
-    
-    
+
+
     <!-- Motif -->
     <label for="motif">Motif:</label>
     <input class="form-control" type="text" id="motif">
     <br/>
-    
+
         <!-- Bilan -->
     <label for="bilan">Bilan:</label>
     <textarea class="form-control" rows="5" id="comment"></textarea>
     <br/>
-    
+
     <!--<h3>Eléments présentés</h3>
     <!-- Praticien -->
     <!--<label for="prod1">Produit 1:</label>
@@ -61,7 +61,7 @@
         <option>cc</option>
     </select>
     <br/>
-    
+
     <!-- Praticien -->
     <!--<label for="prod2">Produit 2:</label>
     <select class="form-control" id="prod2">
@@ -76,7 +76,7 @@
     <select class="form-control" id="prod">
         <option>cc</option>
     </select>
-    
+
     <button class="btn btn-primary" style="padding: 10px;">Valider</button>
   </div>
   </div>
