@@ -7,7 +7,7 @@ body{
   padding : 0.6em;
   font-family:"Trebuchet MS",Verdana,Geneva,Arial,Helvetica,sans-serif;
   font-size:0.8em;
-} 
+}
 #page {
   background-color:white;
   width : 65%;
@@ -142,7 +142,7 @@ ul#menuList a:hover {
   margin-top:0em;
 }
 form {
-  margin-bottom:1em;  
+  margin-bottom:1em;
 }
 .corpsForm legend {
   font-weight:bold;
@@ -154,7 +154,7 @@ form {
   width:33%;
 	margin: 0;
 	padding: 0 .5em 0 0;
-	line-height: 1.8;	
+	line-height: 1.8;
 }
 input, button, textarea, select{
   font-family:"Trebuchet MS", sans-serif;
@@ -171,9 +171,9 @@ input:hover, textarea:hover, select:hover{
   cursor : pointer;
 }
 
-/*  Le texte des messages d'erreur est de couleur rose sur fond ocre et de 
+/*  Le texte des messages d'erreur est de couleur rose sur fond ocre et de
 taille de caract�res l�g�rement sup�rieure � la normale */
-.erreur{ 
+.erreur{
    background-color:rgb(237,210,229);
    color:rgb(203,28,128);
    font-size:1.1em;
@@ -187,7 +187,7 @@ taille de caract�res l�g�rement sup�rieure � la normale */
    background-color:rgb(178,207,81);
    color : white;
    font-size:1.1em;
-   width : 95%  
+   width : 95%
 }
 
 .encadre {
@@ -228,7 +228,7 @@ taille de caract�res l�g�rement sup�rieure � la normale */
 }
 
 /* Style pour les lignes d'en-t�te des tableaux */
-#contenu th {  
+#contenu th {
    background-color:#77AADD;
    height:21px;
    text-align:left;
@@ -236,7 +236,7 @@ taille de caract�res l�g�rement sup�rieure � la normale */
    font-weight:bold;
    border-bottom:0.1em solid #777777;
    font-size:1.1em;
-} 
+}
 
 #contenu td {
    border :1px solid #777777;
@@ -250,7 +250,7 @@ table.listeLegere {
     margin-bottom : 0.5em;
 }
 
-/* Tableaux quadrill�s utilis�s pour l'affichage de listes avec contenu l�ger*/ 
+/* Tableaux quadrill�s utilis�s pour l'affichage de listes avec contenu l�ger*/
 table.listeLegere th, table.listeLegere td {
   border : dotted rgb(178,207,81) 0.1em;
   padding:0.5em;
@@ -317,7 +317,6 @@ body{
     border-radius: 6rem;
     width: 11%;
     margin-top: -3%;
-    transform: rotate(29deg);
 }
 .contact-form form{
     padding: 14%;
