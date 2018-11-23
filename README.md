@@ -1,4 +1,4 @@
-![alt text][logo] 
+![alt text][gilet] 
 # GSB : Galaxy Swiss Bourdin
 - Baptiste : Gérer les activités complémentaires
 - Clément : Médicaments et Connexion d'un visiteur
@@ -31,3 +31,4 @@
 
 
 [logo]: https://baptiste-bisson.com/wp-content/uploads/2016/04/Logo-gsb.png
+[gilet]: https://cdn.radiofrance.fr/s3/cruiser-production/2018/11/f5004c34-0fef-423e-a506-f9f2cd421293/838_gilet_jaune.jpg
