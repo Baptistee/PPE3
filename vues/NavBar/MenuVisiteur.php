@@ -1,9 +1,8 @@
-<div class="collapse navbar-collapse" id="visiteurs-menu">
 
     <ul class="navbar-nav mr-auto">
 
         <li class="nav-item dropdown">
-            <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Comptes Rendus</a>
+            <a class="text-white nav-link dropdown-toggle" href="#" id="visiteurs-menu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Comptes Rendus</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="index.php?uc=gererCR&action=saisirCR">Nouveaux</a>
                 <a class="dropdown-item" href="index.php?uc=gererCR&action=consulterCR">Consulter</a>
@@ -15,7 +14,7 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Praticien</a>
+            <a class="text-white nav-link dropdown-toggle" href="#" id="visiteurs-menu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Praticien</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="index.php?uc=praticien&action=saisir">Nouveaux</a>
                 <a class="dropdown-item" href="index.php?uc=praticien&action=consulter&page=1">Consulter</a>
@@ -23,7 +22,7 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activités complémentaires</a>
+            <a class="text-white nav-link dropdown-toggle" href="#" id="visiteurs-menu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activités complémentaires</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="index.php?uc=activiteComplementaire&action=saisir">Nouvelle</a>
                 <a class="dropdown-item" href="index.php?uc=activiteComplementaire&action=ajouterPraticienDansAC">Ajouter</a>
@@ -38,5 +37,3 @@
     <ul class="nav navbar-nav navbar-right">
         <a class="btn btn-secondary" href="index.php?uc=connexion&action=deconnexion">Déconnexion</a>
     </ul>
-
-</div>
