@@ -1,1 +1,0 @@
-alter table activite_compl modify AC_NUM int(11) AUTO_INCREMENT;
