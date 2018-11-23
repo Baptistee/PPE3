@@ -5,6 +5,7 @@
     </div>
 
     <form method="post" action="index.php?uc=connexion&action=valideConnexion">
+
         <h3>Connexion</h3>
         <div class="row">
             <div class="col-md-6 mx-auto">
@@ -23,5 +24,7 @@
 
             </div>
         </div>
+        
     </form>
+
 </div>

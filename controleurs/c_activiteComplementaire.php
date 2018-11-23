@@ -43,4 +43,14 @@ switch ($_GET["action"]) {
         $lesActivites = $pdo->getLesACDuVisiteur($_SESSION['vis_matricule']);
 
         include("vues/AC/v_consulterActiviteComplementaire.php");break;
+
+
+    case "particperAC":
+
+        include("vues/AC/v_participerAC.php");break;
+
+
+    case "particperACBDD":
+
+        include("vues/AC/v_participerAC.php");break;
 }
