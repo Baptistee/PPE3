@@ -1,4 +1,5 @@
-# ![alt text][logo] GSB : Galaxy Swiss Bourdin
+![alt text][logo] 
+# GSB : Galaxy Swiss Bourdin
 - Baptiste : Gérer les activités complémentaires
 - Clément : Médicaments et Connexion d'un visiteur
 - Loris : Activités
