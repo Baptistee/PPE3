@@ -22,13 +22,13 @@
           <td><?=$value["RAP_MOTIF"]?></td>
           <td><a href="index.php?uc=gererCR&action=details&id=<?= $value["RAP_NUM"]?>">Détail </a></td>
         </tr>
-       <?php endforeach; ?>    
+       <?php endforeach; ?>
   </tbody>
 </table>
 </div>
-<script> 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+<script>
     $(document).ready(function() {
     $('#tableaumedicament').DataTable();
 } );
 </script>
-
