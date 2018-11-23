@@ -3,9 +3,14 @@
 
 <br>
 <div class="card mx-auto w-50" style="max-width: 500px;">
-    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Participer à une activité complémentaire</h4></div>
+
+    <div class="card-header text-center">
+        <h4 class="card-title mt-3 text-center">Participer à une activité complémentaire</h4>
+    </div>
+    
     <div class="card-body">
         <article class="card-body mx-auto" style="max-width: 400px;">
+
             <form method="POST" action="index.php?uc=activiteComplementaire&action=saisirBDD">
 
                 <div class="form-group input-group">
@@ -33,8 +38,8 @@
                     <button type="submit" class="btn btn-primary btn-block"> Ajouter </button>
                 </div>
 
-                <p class="text-center"><a href=""><?=$_SESSION['nom']?> <?=$_SESSION['prenom']?></a> </p>
-        </form>
+            </form>
+
         </article>
     </div>
 </div>

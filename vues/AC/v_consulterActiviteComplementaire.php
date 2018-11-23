@@ -1,6 +1,5 @@
 
 <br>
-
 <div class="card mx-auto w-50" style="max-width: 750px;">
     <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Tableau des activités complémentaires</h4></div>
     <div class="card-body">
@@ -32,6 +31,7 @@
     <br>
 </div>
 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#tableau').DataTable();
