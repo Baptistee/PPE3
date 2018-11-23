@@ -2,7 +2,7 @@
 # GSB : Galaxy Swiss Bourdin
 - Baptiste : Gérer les activités complémentaires
 - Clément : Médicaments et Connexion d'un visiteur
-- Loris : Activités
+- Loris : Gérer les comptes rendues
 - Said : Activités
 
 # Mission 1
@@ -17,8 +17,10 @@
 # Connexion
 -
 
-#
--
+# Compte Rendue
+- Ajouter un compte rendu dans la bdd
+- Ajouter des échantillons
+- Consulter un compte rendu, et les échantillons donnés
 
 #
 -
