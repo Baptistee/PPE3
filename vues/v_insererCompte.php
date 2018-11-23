@@ -1,17 +1,15 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-<div class="card mx-auto w-50" style="max-width: 500px;">
-    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Rapport de visite:</h4></div>
-    <div class="card-body">
-        <article class="card-body mx-auto" style="max-width: 400px;">
-<form method="post" action="http://172.20.201.201/slamg3/GSB_Visites/index.php?uc=gererCR&action=saisir">
-
+<form method="post">
+  <div class="form-group row">
+  <div class="col-10">
+      
+      <h3>Rapport de visite:</h3>
+      <!-- Numéro -->
+  <label for="num" class="col-2 col-form-label">Numéro:</label>
+    <input class="form-control" type="text" id="num">
+    
     <!-- Date Visite-->
-    <div class="form-group input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fas fa-calendar-alt"></i> </span>
-                </div>
-            <input class="form-control" type="date" id="date">
-        </div>
+    <label for="date" class="col-2 col-form-label">Date Visite:</label>
+    <input class="form-control" type="date" id="date">
     <br/>
     
     <!-- Praticien -->
@@ -22,12 +20,18 @@
     <?php endforeach; ?>
     </select>
     <br/>
+    
+    
+     
         </tr>
+       
+    
+    
         <!-- Coefficient -->
     <label for="Coefficient">Coefficient:</label>
     <input class="form-control" type="text" id="Coefficient">
     <br/>
-
+    
     <!-- Ramplacant -->
     <label for="Remplacant">Remplacant:</label>
     <!--<select class="form-control" id="Remplacant">
@@ -35,18 +39,18 @@
     </select>-->
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <br/>
-
-
+    
+    
     <!-- Motif -->
     <label for="motif">Motif:</label>
     <input class="form-control" type="text" id="motif">
     <br/>
-
+    
         <!-- Bilan -->
     <label for="bilan">Bilan:</label>
     <textarea class="form-control" rows="5" id="comment"></textarea>
     <br/>
-
+    
     <!--<h3>Eléments présentés</h3>
     <!-- Praticien -->
     <!--<label for="prod1">Produit 1:</label>
@@ -54,7 +58,7 @@
         <option>cc</option>
     </select>
     <br/>
-
+    
     <!-- Praticien -->
     <!--<label for="prod2">Produit 2:</label>
     <select class="form-control" id="prod2">
@@ -69,9 +73,6 @@
     <select class="form-control" id="prod">
         <option>cc</option>
     </select>
-    </br></br>
-    <button class="btn btn-primary btn-block" >Valider</button>
+  </div>
+  </div>
 </form>
-        </article>
-    </div>
-</div>

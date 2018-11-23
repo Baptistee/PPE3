@@ -8,7 +8,8 @@ class PdoGsb {
     private static $user='root' ;
     private static $mdp='' ;
     private static $monPdo;
-    private static $monPdoGsb=null;
+	private static $monPdoGsb=null;
+
 
     /* BDD EN LIGNE
     private static $serveur='mysql:host=www.db4free.net';
@@ -275,7 +276,6 @@ class PdoGsb {
         try {
             $req="INSERT INTO rapport_visite (VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL) VALUES (:numV, :numR, :numP, :bilan, :motif, :dateV, :rempl)";
             $res=PdoGsb::$monPdo->prepare($req);
-
             $res->bindValue(':numV', $numV, PDO::PARAM_STR);
             $res->bindValue(':numR', $numR, PDO::PARAM_INT);
             $res->bindValue(':numP', $numP, PDO::PARAM_INT);
@@ -291,7 +291,19 @@ class PdoGsb {
     }
 
     public function ajouterEchantillon($numCR, $numMed, $quantité){
-
+        
+    }
+    
+    public function getDetailsEchantillons($id) {
+        try {
+        $req="select MED_NOMCOMMERCIAL, OFF_QTE from offrir INNER JOIN offrir ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL where RAP_NUM = :pid ";
+        $prep= PdoGsb::$monPdo->prepare($req);
+        $prep->execute(array('pid' => $id));
+        return $prep->fetch(PDO::FETCH_ASSOC);
+        }
+        catch (Exception $ex) {
+            $ex->getMessage();
+        }
     }
 
 /*

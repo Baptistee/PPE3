@@ -1,4 +1,3 @@
-<div class="container">
 <table id="tableaumedicament" class="table table-striped table-bordered" style="width: 100%">
   <thead>
     <tr>
@@ -8,7 +7,6 @@
       <th scope="col">Date du rapport</th>
       <th scope="col">Bilan du rapport</th>
       <th scope="col">Motif du rapport</th>
-      <th scope="col">Échantillons</th>
     </tr>
   </thead>
   <tbody>
@@ -20,12 +18,11 @@
           <td><?=$value["RAP_DATE"]?></td>
           <td><?=$value["RAP_BILAN"]?></td>
           <td><?=$value["RAP_MOTIF"]?></td>
-          <td><a href="index.php?uc=gererCR&action=details&id=<?= $value["RAP_NUM"]?>">Détail </a></td>
+         
         </tr>
        <?php endforeach; ?>    
   </tbody>
 </table>
-</div>
 <script> 
     $(document).ready(function() {
     $('#tableaumedicament').DataTable();

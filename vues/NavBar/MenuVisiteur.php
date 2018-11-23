@@ -23,10 +23,11 @@
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a class="dropdown-item" href="index.php?uc=activiteComplementaire&action=saisir">Nouvelle</a>
         <a class="dropdown-item" href="index.php?uc=activiteComplementaire&action=ajouterPraticienDansAC">Ajouter Praticien</a>
+        <a class="dropdown-item" href="index.php?uc=activiteComplementaire&action=particperAC">Participer</a>
         <a class="dropdown-item" href="index.php?uc=activiteComplementaire&action=consulter">Consulter</a>
     </div>
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="index.php?uc=connexion&action=deconnexion">Déconnexion</a>
+    <a class="btn btn-outline-danger" href="index.php?uc=connexion&action=deconnexion">Déconnexion</a>
 </li>

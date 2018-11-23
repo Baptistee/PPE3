@@ -1,7 +1,6 @@
 <?php
 include("vues/NavBar/v_NavBar.php");
 //$action = $_REQUEST['action'];
-$idVisiteur = $_SESSION['vis_matricule'];
 switch($_GET['action']){
         case 'saisirCR':{
             $lesPraticiens = $pdo->getLesPraticiens();
@@ -11,12 +10,19 @@ switch($_GET['action']){
         }
 
         case 'saisir':{
-            $pdo->InsererActivite($idVisiteur, $_POST["numR"], $_POST["numP"], $_POST["bilan"], $_POST["motif"], $_POST["dateV"], $_POST["rempl"]);
+            $pdo->InsererActivite($_SESSION['vis_matricule'], $_POST["numR"], $_POST["numP"], $_POST["bilan"], $_POST["motif"], $_POST["dateV"], $_POST["rempl"]);
         }
 
         case 'consulterCR':{
             $lesCompteRendu = $pdo->getCR();
             include('vues/CR/v_consulterCompte.php');
+            break;
+        }
+        case 'details':{
+            $id =  $_REQUEST['id'];
+            settype($id, "string");
+            $lesEchantillons = $pdo->getDetailsEchantillons($id);
+            include('vues/CR/v_consulterCompteDetails.php');
             break;
         }
 
