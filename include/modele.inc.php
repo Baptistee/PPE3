@@ -3,13 +3,21 @@
 class PdoGsb {
 
     // Attributs
+    private static $serveur='mysql:host=http://172.20.201.201';
+    private static $bdd='dbname=gsb_visiteurs_g3';
+    private static $user='slamg3';
+    private static $mdp='slamg3';
+    private static $monPdo;
+    private static $monPdoGsb=null;
+
+    /*
     private static $serveur='mysql:host=localhost';
     private static $bdd='dbname=gsb_visiteurs_g3';
     private static $user='root' ;
     private static $mdp='' ;
     private static $monPdo;
-	private static $monPdoGsb=null;
-
+    private static $monPdoGsb=null;
+    */
 
     /* BDD EN LIGNE
     private static $serveur='mysql:host=www.db4free.net';
