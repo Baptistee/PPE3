@@ -6,6 +6,7 @@
 <form method="post" action="http://172.20.201.201/slamg3/GSB_Visites/index.php?uc=gererCR&action=saisir">
 
     <!-- Date Visite-->
+    Date de la visite
     <div class="form-group input-group">
         <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-calendar-alt"></i> </span>
@@ -13,20 +14,30 @@
             <input class="form-control" type="date" id="date">
         </div>
     <br/>
-    
+
     <!-- Praticien -->
-    <label for="Praticien">Praticien:</label>
+    Praticien
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fas fa-user"></i> </span>
+                </div>
     <select class="form-control" id="Praticien">
     <?php foreach ($lesPraticiens as $key => $value):?>
         <option><?=$value["PRA_NOM"].' '.$value["PRA_PRENOM"]?></option>
     <?php endforeach; ?>
     </select>
-    <br/>
+</div>
+<br/>
         </tr>
         <!-- Coefficient -->
-    <label for="Coefficient">Coefficient:</label>
+    <label for="Coefficient">Coefficient</label>
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fas fa-user"></i> </span>
+                </div>
     <input class="form-control" type="text" id="Coefficient">
-    <br/>
+</div>
+<br/>
 
     <!-- Ramplacant -->
     <label for="Remplacant">Remplacant:</label>
