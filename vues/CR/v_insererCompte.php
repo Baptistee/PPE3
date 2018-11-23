@@ -11,7 +11,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-calendar-alt"></i> </span>
                 </div>
-            <input class="form-control" type="date" id="date">
+            <input class="form-control" type="date" name="date">
         </div>
     <br/>
 
@@ -21,7 +21,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-user"></i> </span>
                 </div>
-    <select class="form-control" id="Praticien">
+    <select class="form-control" name="Praticien">
     <?php foreach ($lesPraticiens as $key => $value):?>
         <option><?=$value["PRA_NOM"].' '.$value["PRA_PRENOM"]?></option>
     <?php endforeach; ?>
@@ -35,14 +35,14 @@
         <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-user"></i> </span>
                 </div>
-    <input class="form-control" type="text" id="Coefficient">
+    <input class="form-control" type="text" name="Coefficient">
 </div>
 <br/>
 
     <!-- Ramplacant -->
     Remplacant
     <div class="form-group input-group">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <input type="checkbox" class="form-check-input" name="exampleCheck1">
     </div>
     <br/>
 
@@ -53,7 +53,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-edit"></i> </span>
                 </div>
-    <input class="form-control" type="text" id="motif">
+    <input class="form-control" type="text" name="motif">
     </div>
     <br/>
 
@@ -63,7 +63,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-edit"></i> </span>
                 </div>
-    <textarea class="form-control" rows="5" id="comment"></textarea>
+    <textarea class="form-control" rows="5" name="comment"></textarea>
     </div>
     <br/>
 
@@ -86,7 +86,7 @@
     -->
     <h3>Échantillons</h3>
     <br/>
-    <select class="form-control" id="prod">
+    <select class="form-control" name="prod">
         <option>cc</option>
     </select>
     </br></br>

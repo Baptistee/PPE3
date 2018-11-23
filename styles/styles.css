@@ -306,6 +306,7 @@ body{
     margin-top: 10%;
     margin-bottom: 5%;
     width: 70%;
+    border-radius: 1em;
 }
 .contact-form .form-control{
     border-radius:1rem;
@@ -320,6 +321,7 @@ body{
 }
 .contact-form form{
     padding: 14%;
+
 }
 .contact-form form .row{
     margin-bottom: -7%;
