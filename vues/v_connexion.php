@@ -1,7 +1,7 @@
 <div class="container contact-form">
 
     <div class="contact-image">
-        <img src="./images/pinguLogo.png" alt="rocket_contact"/>
+        <img src="./images/MedicamentLogo.png" alt="rocket_contact"/>
     </div>
 
     <form method="post" action="index.php?uc=connexion&action=valideConnexion">
