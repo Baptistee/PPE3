@@ -17,8 +17,10 @@
 # Connexion
 -
 
-#
--
+#Compte Rendue
+-Ajouter un compte rendu dans la bdd
+-Ajouter des échantillons
+-Consulter un compte rendu, et les échantillons donnés
 
 #
 -
