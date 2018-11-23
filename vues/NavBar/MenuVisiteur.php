@@ -29,5 +29,5 @@
 </li>
 
 <li class="nav-item">
-    <a class="btn btn-outline-secondary" href="index.php?uc=connexion&action=deconnexion">Déconnexion</a>
+    <a class="btn btn-secondary" href="index.php?uc=connexion&action=deconnexion">Déconnexion</a>
 </li>
