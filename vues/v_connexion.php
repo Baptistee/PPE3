@@ -7,7 +7,7 @@
     <form method="post" action="index.php?uc=connexion&action=valideConnexion">
         <h3>Connexion</h3>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 mx-auto">
 
                 <div class="form-group">
                     <input id="login" type="text" name="login" class="form-control" placeholder="Identifiant" value="" />
@@ -18,8 +18,9 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" name="btnSubmit" class="btnContact" value="Connexion" />
+                    <input type="submit" name="btnSubmit" class="btn btn-primary btn-lg" value="Connexion" />
                 </div>
+
             </div>
         </div>
     </form>
