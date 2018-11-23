@@ -4,7 +4,7 @@ class PdoGsb {
 
     // Attributs
     private static $serveur='mysql:host=localhost';
-    private static $bdd='dbname=gsb_visiteurs_g3';
+    private static $bdd='dbname=gsb_visiteurs';
     private static $user='root' ;
     private static $mdp='' ;
     private static $monPdo;
@@ -291,9 +291,9 @@ class PdoGsb {
     }
 
     public function ajouterEchantillon($numCR, $numMed, $quantité){
-        
+
     }
-    
+
     public function getDetailsEchantillons($id) {
         try {
         $req="select MED_NOMCOMMERCIAL, OFF_QTE from offrir INNER JOIN offrir ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL where RAP_NUM = :pid ";
