@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 <br>
-
 <div class="card mx-auto w-50" style="max-width: 500px;">
     <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Choisir une activité complémentaire</h4></div>
     <div class="card-body">
