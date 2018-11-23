@@ -30,7 +30,7 @@
 <br/>
         </tr>
         <!-- Coefficient -->
-    <label for="Coefficient">Coefficient</label>
+    Coefficient
     <div class="form-group input-group">
         <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-user"></i> </span>
@@ -40,22 +40,31 @@
 <br/>
 
     <!-- Ramplacant -->
-    <label for="Remplacant">Remplacant:</label>
-    <!--<select class="form-control" id="Remplacant">
-        <option>cc</option>
-    </select>-->
+    Remplacant
+    <div class="form-group input-group">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    </div>
     <br/>
 
 
     <!-- Motif -->
-    <label for="motif">Motif:</label>
+    Motif
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fas fa-edit"></i> </span>
+                </div>
     <input class="form-control" type="text" id="motif">
+    </div>
     <br/>
 
         <!-- Bilan -->
-    <label for="bilan">Bilan:</label>
+    <label for="bilan">Bilan</label>
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fas fa-edit"></i> </span>
+                </div>
     <textarea class="form-control" rows="5" id="comment"></textarea>
+    </div>
     <br/>
 
     <!--<h3>Eléments présentés</h3>
