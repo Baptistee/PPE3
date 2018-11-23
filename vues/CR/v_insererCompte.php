@@ -67,23 +67,6 @@
     </div>
     <br/>
 
-    <!--<h3>Eléments présentés</h3>
-    <!-- Praticien -->
-    <!--<label for="prod1">Produit 1:</label>
-    <select class="form-control" id="prod1">
-        <option>cc</option>
-    </select>
-    <br/>
-
-    <!-- Praticien -->
-    <!--<label for="prod2">Produit 2:</label>
-    <select class="form-control" id="prod2">
-        <option>cc</option>
-    </select>
-    <br/>
-    <label id="exampleCheck2">Documentation Offerte:</label><br/>
-    <input type="checkbox" class="form-check-input" id="exampleCheck2">
-    -->
     <h3>Échantillons</h3>
     <br/>
     <select class="form-control" name="prod">
@@ -95,10 +78,3 @@
         </article>
     </div>
 </div>
-
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#tableau').DataTable();
-    } );
-</script>
