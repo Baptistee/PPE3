@@ -1,4 +1,4 @@
-# GSB : Galaxy Swiss Bourdin
+# ![alt text][logo] GSB : Galaxy Swiss Bourdin
 - Baptiste : Gérer les activités complémentaires
 - Clément : Médicaments et Connexion d'un visiteur
 - Loris : Activités
@@ -24,7 +24,7 @@
 
 # Importer la BDD à ajouter
 
-Reference-style:
-![alt text][logo]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+
+
+[logo]: https://baptiste-bisson.com/wp-content/uploads/2016/04/Logo-gsb.png
