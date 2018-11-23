@@ -1,5 +1,5 @@
 
-    
+
     <table id="tablePraticiens" class="table text-center table-striped table-bordered">
   <thead>
     <tr>
@@ -24,17 +24,15 @@
           <td><?=$value["PRA_VILLE"]?></td>
           <td><?=$value["PRA_COEFNOTORIETE"]?></td>
           <td><?=$value["TYP_CODE"]?></td>
-          
+
         </tr>
        <?php endforeach; ?>
-     
+
   </tbody>
 </table>
- <script> 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+ <script>
     $(document).ready(function() {
     $('#tablePraticiens').DataTable();
 } );
 </script>
-
-
-
