@@ -4,7 +4,6 @@
     <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Consulter les rapports de visite</h4></div>
     <div class="card-body">
         <article class="card-body mx-auto" style="max-width: 80%;">
-
         <table id="tableCR" class="table table-hover table-bordered" style="">
           <thead>
             <tr>
@@ -44,7 +43,7 @@
                <?php endforeach; ?>
           </tbody>
         </table>
-        
+
     </div>
 </div>
 

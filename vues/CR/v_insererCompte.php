@@ -6,14 +6,14 @@
       <form method="post" action="index.php?uc=gererCR&action=saisir">
 
         <!-- Numéro de Rapport -->
-        Numéro de Rapport
+        <!--Numéro de Rapport
         <div class="form-group input-group">
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-briefcase"></i> </span>
           </div>
           <input class="form-control" type="text" name="numR">
         </div>
-        <br/>
+        <br/>-->
 
 
         <!-- Date Visite-->
@@ -32,9 +32,9 @@
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-user"></i> </span>
           </div>
-          <select class="form-control" name="pra">
+          <select class="form-control" name="pra" value="<?=$value["PRA_NUM"]?>">
             <?php foreach ($lesPraticiens as $key => $value):?>
-              <option><?=$value["PRA_NOM"].' '.$value["PRA_PRENOM"].' ('.$value["PRA_COEFNOTORIETE"].')'?></option>
+              <option value="<?=$value["PRA_NUM"]?>"><?=$value["PRA_NOM"].' '.$value["PRA_PRENOM"].' ('.$value["PRA_COEFNOTORIETE"].')'?></option>
             <?php endforeach; ?>
           </select>
           <p class="note">Le coefficient de notoriété est indiqué entre parenthèses</p>

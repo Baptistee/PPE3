@@ -10,11 +10,15 @@ switch($_GET['action']){
         }
 
         case 'saisir':{
+            $max = $pdo->getNewId();
+            var_dump($max);
+            $newId =(int)$max;
+            var_dump($newId);
           $rempl = 0;
           if (isset($_POST['rempl'])) {
             $rempl = 1;
           }
-            $pdo->ajouterCR($_SESSION['vis_matricule'], $_POST["numR"], $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
+            $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
         }
 
         case 'consulterCR':{

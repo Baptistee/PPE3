@@ -8,7 +8,7 @@ class PdoGsb {
     private static $user='root' ;
     private static $mdp='' ;
     private static $monPdo;
-	private static $monPdoGsb=null;
+    private static $monPdoGsb=null;
 
 
     /* BDD EN LIGNE
@@ -17,15 +17,15 @@ class PdoGsb {
     private static $user='sql7266501' ;
     private static $mdp='w4dn1WGxkf' ;
     private static $monPdo;
-	private static $monPdoGsb=null;
+    private static $monPdoGsb=null;
     */
 
 
     // Methodes
-	private function __construct() {
+    private function __construct() {
         try {
             PdoGsb::$monPdo = new PDO(PdoGsb::$serveur.';'.PdoGsb::$bdd, PdoGsb::$user, PdoGsb::$mdp);
-		    PdoGsb::$monPdo->query("SET CHARACTER SET utf8");
+            PdoGsb::$monPdo->query("SET CHARACTER SET utf8");
             PdoGsb::$monPdo->setAttribute ( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
         }
@@ -35,33 +35,33 @@ class PdoGsb {
     }
 
 
-	public function _destruct() {
+    public function _destruct() {
         PdoGsb::$monPdo = null;
-	}
+    }
 
 
     public static function getPdoGsb() {
-	    if (PdoGsb::$monPdoGsb==null) {
-		    PdoGsb::$monPdoGsb= new PdoGsb();
-		}
-		return PdoGsb::$monPdoGsb;
-	}
+        if (PdoGsb::$monPdoGsb==null) {
+            PdoGsb::$monPdoGsb= new PdoGsb();
+        }
+        return PdoGsb::$monPdoGsb;
+    }
 
 
     public function getInfosVisiteur($login,$mdp) {
         $req="select VIS_MATRICULE, VIS_NOM ,VIS_PRENOM from visiteur where LOGIN = '$login' and MDP = '$mdp'";
         //$req="select VIS_MATRICULE, VIS_NOM ,VIS_PRENOM from visiteur where LOGIN = 'test' and MDP = 'test'";
         $rs = PdoGsb::$monPdo->query($req);
-		$ligne = $rs->fetch(PDO::FETCH_ASSOC);
-		return $ligne;
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        return $ligne;
     }
 
 
     public function getLesVisiteurs() {
         $req="select * from visiteur";
         $rs = PdoGsb::$monPdo->query($req);
-		$ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
-		return $ligne;
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
     }
 
 
@@ -92,7 +92,7 @@ class PdoGsb {
     public function insertPraticien($num,$nom,$prenom,$adresse,$cp,$ville,$note,$code) {
         try {
             $req="INSERT INTO praticien ( PRA_NUM,PRA_NOM, PRA_PRENOM, PRA_ADRESSE, PRA_CP, PRA_VILLE, PRA_COEFNOTORIETE,TYP_CODE) "
-                . "VALUES ( :num,:nom, :prenom, :adresse, :cp, :ville, :note,:code)";
+            . "VALUES ( :num,:nom, :prenom, :adresse, :cp, :ville, :note,:code)";
             $res=PdoGsb::$monPdo->prepare($req);
 
             $res->bindValue(':num', $num, PDO::PARAM_INT);
@@ -119,11 +119,11 @@ class PdoGsb {
     }
 
 
-/*
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - BAPTISTE  - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-*/
+    /*
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - BAPTISTE  - - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    */
 
 
 
@@ -138,17 +138,17 @@ class PdoGsb {
             $res->execute();
 
             $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
-    		return $ligne;
+            return $ligne;
         }
 
         catch (Exception $ex) {
             ?>
-                <div class="contenu">
-                    <div class="alert alert-danger">
-                        <h6>Erreur requete de fonction "getLesPraticiensPasInvite"!</h6>
-                        <h6><?=$ex->getMessage();?></h6>
-                    </div>
+            <div class="contenu">
+                <div class="alert alert-danger">
+                    <h6>Erreur requete de fonction "getLesPraticiensPasInvite"!</h6>
+                    <h6><?=$ex->getMessage();?></h6>
                 </div>
+            </div>
             <?php
         }
     }
@@ -171,12 +171,12 @@ class PdoGsb {
 
         catch (Exception $ex) {
             ?>
-                <div class="contenu">
-                    <div class="alert alert-danger">
-                        <h6>Erreur insertion des activites</h6>
-                        <h6><?=$ex->getMessage();?></h6>
-                    </div>
+            <div class="contenu">
+                <div class="alert alert-danger">
+                    <h6>Erreur insertion des activites</h6>
+                    <h6><?=$ex->getMessage();?></h6>
                 </div>
+            </div>
             <?php
         }
     }
@@ -219,18 +219,18 @@ class PdoGsb {
     }
 
 
-/*
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - BAPTISTE - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-*/
+    /*
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - BAPTISTE - - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    */
 
 
-/*
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - COP1 le bg  - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-*/
+    /*
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - COP1 le bg  - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    */
 
 
     public function GetListeMedicament() {
@@ -249,31 +249,42 @@ class PdoGsb {
     }
 
 
-/*
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - COP1 le bg  - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-*/
+    /*
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - COP1 le bg  - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    */
 
 
-/*
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - LOLO LE COCO  - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-*/
+    /*
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - LOLO LE COCO  - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    */
 
+    public function getNewId(){
+        try {
+            $req="SELECT MAX(RAP_NUM) + 1 FROM rapport_visite";
+            $prep= PdoGsb::$monPdo->query($req);
+            $ligne = $prep->fetch(PDO::FETCH_ASSOC);
+            //return (int)$ligne;
+            var_dump($ligne);
+        }
+        catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
 
     public function getCR() {
-      try {
-        $req="SELECT visiteur.VIS_MATRICULE, VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, praticien.PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite INNER JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE INNER JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM";
-        $res = PdoGsb::$monPdo->query($req);
-
-        $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
-        return $ligne;
-    }
-    catch (Exception $ex) {
-        $ex->getMessage();
-    }
+        try {
+            $req="SELECT VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite  JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM";
+            $res = PdoGsb::$monPdo->query($req);
+            $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
+            return $ligne;
+        }
+        catch (Exception $ex) {
+            $ex->getMessage();
+        }
     }
 
 
@@ -296,49 +307,49 @@ class PdoGsb {
     }
 
     public function ajouterEchantillon($numCR, $numMed, $quantité){
-          try {
-
-      }
-      catch (Exception $ex) {
-      $ex->getMessage();
-      }
-    }
-
-    public function getDetailsEchantillons($id) {
         try {
-        $req="select MED_NOMCOMMERCIAL, OFF_QTE from offrir INNER JOIN offrir ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL where RAP_NUM = :pid ";
-        $prep= PdoGsb::$monPdo->prepare($req);
-        $prep->execute(array('pid' => $id));
-        return $prep->fetch(PDO::FETCH_ASSOC);
+
         }
         catch (Exception $ex) {
             $ex->getMessage();
         }
     }
 
-/*
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - LOLO L'OPOSSUM  - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-*/
+    public function getDetailsEchantillons($id) {
+        try {
+            $req="select MED_NOMCOMMERCIAL, OFF_QTE from offrir INNER JOIN offrir ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL where RAP_NUM = :pid ";
+            $prep= PdoGsb::$monPdo->prepare($req);
+            $prep->execute(array('pid' => $id));
+            return $prep->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    /*
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - LOLO L'OPOSSUM  - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    */
 
 
-/*
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - SAIDO LE COSTO  - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-*/
+    /*
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - SAIDO LE COSTO  - - - - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    */
 
 
-// fonction
-//whites are terrorists
+    // fonction
+    //whites are terrorists
 
 
-/*
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - SAIDO LE COSTO  - - - - - - - - - - - - - - - - - - - - -
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-*/
+    /*
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - SAIDO LE COSTO  - - - - - - - - - - - - - - - - - - - - -
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    */
 }
 
 ?>
