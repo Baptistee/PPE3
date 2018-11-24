@@ -22,7 +22,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-calendar-alt"></i> </span>
           </div>
-          <input class="form-control" type="date" name="date">
+          <input class="form-control" type="date" name="date" id="date">
         </div>
         <br/>
 
@@ -60,8 +60,8 @@
 
       <!-- Ramplacant -->
       Un remplaçant a t-il réalisé la visite à la place du praticien (ou du visiteur) ?
-      <div class="form-group input-group">
-        <center><input type="checkbox" class="form-check-input" name="rempl"></center>
+      <div class="form-group input-group" style="">
+        <input type="checkbox" class="form-check-input" name="rempl" style="margin-left:1em; margin-top:1em;">
       </div>
       <br/>
 
