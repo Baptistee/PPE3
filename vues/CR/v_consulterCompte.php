@@ -1,16 +1,18 @@
 <br>
 
 <div class="card mx-auto w-80" style="max-width: 80%;">
-    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Créer une nouvelle activité</h4></div>
+    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Consulter les rapports de visite</h4></div>
     <div class="card-body">
         <article class="card-body mx-auto" style="max-width: 80%;">
 
         <table id="tableaumedicament" class="table table-striped table-bordered" style="width: 100%">
           <thead>
             <tr>
-                <th scope="col">Matricule visiteur</th>
-              <th scope="col">Numéro du rapport</th>
-              <th scope="col">Numéro du Praticien</th>
+                <th scope="col">Numéro du rapport</th>
+              <th scope="col">Matricule visiteur</th>
+              <th scope="col">Nom du visiteur</th>
+              <th scope="col">Numéro du praticien</th>
+              <th scope="col">Nom du praticien</th>
               <th scope="col">Date du rapport</th>
               <th scope="col">Bilan du rapport</th>
               <th scope="col">Motif du rapport</th>
@@ -20,9 +22,11 @@
           <tbody>
               <?php foreach ($lesCompteRendu as $key => $value):?>
                 <tr>
-                  <th scope="row"><?=$value["VIS_MATRICULE"]?></th>
-                  <td><?=$value["RAP_NUM"]?></td>
+                  <th scope="row"><?=$value["RAP_NUM"]?></th>
+                  <td><?=$value["VIS_MATRICULE"]?></td>
+                  <td><?=$value["VIS_NOM"].' '.$value["VIS_PRENOM"]?></td>
                   <td><?=$value["PRA_NUM"]?></td>
+                  <td><?=$value["PRA_NOM"].' '.$value["PRA_PRENOM"]?></td>
                   <td><?=$value["RAP_DATE"]?></td>
                   <td><?=$value["RAP_BILAN"]?></td>
                   <td><?=$value["RAP_MOTIF"]?></td>

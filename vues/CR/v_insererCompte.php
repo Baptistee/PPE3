@@ -1,9 +1,20 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <div class="card mx-auto w-50" style="max-width: 500px;">
-    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Rapport de visite:</h4></div>
+    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Rapport de visite</h4></div>
     <div class="card-body">
         <article class="card-body mx-auto" style="max-width: 400px;">
-<form method="post" action="http://172.20.201.201/slamg3/GSB_Visites/index.php?uc=gererCR&action=saisir">
+<form method="post" action="index.php?uc=gererCR&action=saisir">
+
+  <!-- Numéro de Rapport -->
+  Numéro de Rapport
+  <div class="form-group input-group">
+  <div class="input-group-prepend">
+      <span class="input-group-text"> <i class="fas fa-briefcase"></i> </span>
+          </div>
+  <input class="form-control" type="text" name="numR">
+  </div>
+  <br/>
+
 
     <!-- Date Visite-->
     Date de la visite
@@ -21,7 +32,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-user"></i> </span>
                 </div>
-    <select class="form-control" name="Praticien">
+    <select class="form-control" name="pra">
     <?php foreach ($lesPraticiens as $key => $value):?>
         <option><?=$value["PRA_NOM"].' '.$value["PRA_PRENOM"]?></option>
     <?php endforeach; ?>
@@ -35,14 +46,14 @@
         <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-user"></i> </span>
                 </div>
-    <input class="form-control" type="text" name="Coefficient">
+    <input class="form-control" type="text" name="coef">
 </div>
 <br/>
 
     <!-- Ramplacant -->
     Remplacant
     <div class="form-group input-group">
-    <input type="checkbox" class="form-check-input" name="exampleCheck1">
+    <input type="checkbox" class="form-check-input" name="rempl">
     </div>
     <br/>
 
@@ -63,7 +74,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-edit"></i> </span>
                 </div>
-    <textarea class="form-control" rows="5" name="comment"></textarea>
+    <textarea class="form-control" rows="5" name="bilan"></textarea>
     </div>
     <br/>
 

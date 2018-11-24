@@ -10,7 +10,11 @@ switch($_GET['action']){
         }
 
         case 'saisir':{
-            $pdo->InsererActivite($_SESSION['vis_matricule'], $_POST["numR"], $_POST["numP"], $_POST["bilan"], $_POST["motif"], $_POST["dateV"], $_POST["rempl"]);
+          $rempl = 0;
+          if (isset($_POST['rempl'])) {
+            $rempl = 1;
+          }
+            $pdo->ajouterCR($_SESSION['vis_matricule'], $_POST["numR"], $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
         }
 
         case 'consulterCR':{

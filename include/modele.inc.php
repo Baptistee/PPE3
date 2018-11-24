@@ -264,11 +264,16 @@ class PdoGsb {
 
 
     public function getCR() {
-        $req="select * from rapport_visite";
+      try {
+        $req="SELECT visiteur.VIS_MATRICULE, VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, praticien.PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite INNER JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE INNER JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM";
         $res = PdoGsb::$monPdo->query($req);
 
         $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
         return $ligne;
+    }
+    catch (Exception $ex) {
+        $ex->getMessage();
+    }
     }
 
 
@@ -291,7 +296,12 @@ class PdoGsb {
     }
 
     public function ajouterEchantillon($numCR, $numMed, $quantité){
+          try {
 
+      }
+      catch (Exception $ex) {
+      $ex->getMessage();
+      }
     }
 
     public function getDetailsEchantillons($id) {
@@ -321,6 +331,7 @@ class PdoGsb {
 
 
 // fonction
+//whites are terrorists
 
 
 /*
