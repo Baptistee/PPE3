@@ -22,20 +22,23 @@ switch($action){
 			$id = $visiteur['VIS_MATRICULE'];
 			$nom =  $visiteur['VIS_NOM'];
 			$prenom = $visiteur['VIS_PRENOM'];
-                        $_SESSION['login']= $login; // mémorise les variables de session
-			$_SESSION['vis_matricule']= $id;
-                        $_SESSION['nom']= $nom;
-                        $_SESSION['prenom']= $prenom;
-                        include("vues/NavBar/v_NavBar.php");
 
-                        include('vues/v_accueil.php');
+			 // mémorise les variables de session
+			$_SESSION['vis_matricule']= $id;
+			$_SESSION['login']= $login;
+            $_SESSION['nom']= $nom;
+            $_SESSION['prenom']= $prenom;
+            include("vues/NavBar/v_NavBar.php");
+
+            include('vues/v_accueil.php');
 			}
 		break;
 	}
-        case 'deconnexion':{   
-                session_unset();
-                session_destroy();                            
-            
+        case 'deconnexion':{
+			include('vues/v_auRevoir.php'); 
+            session_unset();
+            session_destroy();
+
         }
 	default :{
 		include("vues/v_connexion.php");
