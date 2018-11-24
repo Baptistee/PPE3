@@ -5,7 +5,7 @@
     <div class="card-body">
         <article class="card-body mx-auto" style="max-width: 80%;">
 
-        <table id="tablePraticiens" class="table text-center table-striped table-bordered">
+        <table id="tablePraticiens" class="table text-center table table-hover table-bordered">
             <thead>
             <tr>
               <th scope="col">#</th>

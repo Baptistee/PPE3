@@ -5,7 +5,7 @@
     <div class="card-body">
         <article class="card-body mx-auto" style="max-width: 80%;">
 
-            <table id="tableaumedicament" class="table text-center table-striped table-bordered" style="width: 100%">
+            <table id="tableaumedicament" class="table text-center table table-hover table-bordered" style="width: 100%">
   <thead>
     <tr>
       <th scope="col">Dépot légal</th>
