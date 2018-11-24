@@ -1,7 +1,7 @@
 <br>
 
 <div class="card mx-auto w-80" style="max-width: 80%;">
-    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Créer une nouvelle activité</h4></div>
+    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Liste des Médicaments</h4></div>
     <div class="card-body">
         <article class="card-body mx-auto" style="max-width: 80%;">
 
