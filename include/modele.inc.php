@@ -264,10 +264,10 @@ class PdoGsb {
 
     public function getNewId(){
         try {
-            $req="SELECT MAX(RAP_NUM) + 1 FROM rapport_visite";
+            $req="SELECT MAX(RAP_NUM) AS max FROM rapport_visite";
             $prep= PdoGsb::$monPdo->query($req);
             $ligne = $prep->fetch(PDO::FETCH_ASSOC);
-            //return (int)$ligne;
+            return $ligne['max'];
             var_dump($ligne);
         }
         catch (Exception $ex) {
@@ -317,10 +317,13 @@ class PdoGsb {
 
     public function getDetailsEchantillons($id) {
         try {
-            $req="select MED_NOMCOMMERCIAL, OFF_QTE from offrir INNER JOIN offrir ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL where RAP_NUM = :pid ";
+            $req="select * from offrir INNER JOIN offrir ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL where offrir.RAP_NUM = :pid ";
+            var_dump($req);
             $prep= PdoGsb::$monPdo->prepare($req);
-            $prep->execute(array('pid' => $id));
+            $prep->bindValue(':pid', $id, PDO::PARAM_INT);
+            var_dump($prep);
             return $prep->fetchAll(PDO::FETCH_ASSOC);
+            var_dump($prep);
         }
         catch (Exception $ex) {
             $ex->getMessage();

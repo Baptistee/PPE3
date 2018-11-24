@@ -4,16 +4,12 @@ include("vues/NavBar/v_NavBar.php");
 switch($_GET['action']){
         case 'saisirCR':{
             $lesPraticiens = $pdo->getLesPraticiens();
-
             include('vues/CR/v_insererCompte.php');
             break;
         }
-
         case 'saisir':{
             $max = $pdo->getNewId();
-            var_dump($max);
-            $newId =(int)$max;
-            var_dump($newId);
+            $max++;
           $rempl = 0;
           if (isset($_POST['rempl'])) {
             $rempl = 1;
@@ -27,10 +23,16 @@ switch($_GET['action']){
             break;
         }
         case 'details':{
+            try{
             $id =  $_REQUEST['id'];
-            settype($id, "string");
+            var_dump($id);
             $lesEchantillons = $pdo->getDetailsEchantillons($id);
+            var_dump($lesEchantillons);
             include('vues/CR/v_consulterCompteDetails.php');
+        }
+        catch (Exception $ex) {
+            $ex->getMessage();
+        }
             break;
         }
 
