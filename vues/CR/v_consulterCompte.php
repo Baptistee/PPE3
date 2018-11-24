@@ -44,8 +44,7 @@
                <?php endforeach; ?>
           </tbody>
         </table>
-        <p>Note: Le créateur de ce rapport sera <?= $_SESSION['nom'].' '.$_SESSION['prenom'];?></p>
-
+        
     </div>
 </div>
 

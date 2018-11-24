@@ -356,3 +356,7 @@ body{
 .card{
   border-radius: 1em;
 }
+
+.note{
+  font-size: 12px;
+}

@@ -37,6 +37,7 @@
               <option><?=$value["PRA_NOM"].' '.$value["PRA_PRENOM"].' ('.$value["PRA_COEFNOTORIETE"].')'?></option>
             <?php endforeach; ?>
           </select>
+          <p class="note">Le coefficient de notoriété est indiqué entre parenthèses</p>
         </div>
         <br/>
       </tr>
@@ -93,6 +94,7 @@
     </br></br>
     <button class="btn btn-primary btn-block" >Valider</button>
   </form>
+  <p class="note">Note: Le créateur de ce rapport sera <?= $_SESSION['nom'].' '.$_SESSION['prenom'];?></p>
 </article>
 </div>
 </div>
