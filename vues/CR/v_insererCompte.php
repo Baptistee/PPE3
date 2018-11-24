@@ -94,7 +94,7 @@
     </br></br>
     <button class="btn btn-primary btn-block" >Valider</button>
   </form>
-  <p class="note">Note: Le créateur de ce rapport sera <?= $_SESSION['nom'].' '.$_SESSION['prenom'];?></p>
+  <p class="note">Note: Le rapport sera crée par <?= $_SESSION['nom'].' '.$_SESSION['prenom'];?> le <?=date('d-m-y');?></p>
 </article>
 </div>
 </div>

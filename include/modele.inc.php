@@ -268,7 +268,6 @@ class PdoGsb {
             $prep= PdoGsb::$monPdo->query($req);
             $ligne = $prep->fetch(PDO::FETCH_ASSOC);
             return $ligne['max'];
-            var_dump($ligne);
         }
         catch (Exception $ex) {
             $ex->getMessage();
