@@ -35,7 +35,10 @@ switch($action){
 		break;
 	}
         case 'deconnexion':{
-			include('vues/v_auRevoir.php'); 
+			if (isset($_SESSION['nom'])) {
+				include('vues/v_auRevoir.php');
+			}
+
             session_unset();
             session_destroy();
 
