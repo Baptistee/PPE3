@@ -84,7 +84,7 @@
       <br/>
 
       <!-- Bilan -->
-      <label for="bilan">Bilan</label>
+      Bilan
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fas fa-edit"></i> </span>
@@ -99,7 +99,8 @@
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fas fa-pills"></i> </span>
         </div>
-      <select class="form-control" name="medic" value="<?=$med['MED_DEPOTLEGAL']?>" required>
+      <select class="form-control" name="medic" value="<?=$med['MED_DEPOTLEGAL']?>">
+          <option value="">Ne rien sélectionner</option>
       <?php foreach ($LesMedicaments as $key => $med):?>
           <option value="<?=$med["MED_DEPOTLEGAL"]?>"><?=$med["MED_DEPOTLEGAL"].' '.$med["MED_NOMCOMMERCIAL"].' '. $med["Fam_code"]/*.' '.$med["FAM_LIBELLE"].' '.$med["MED_PRIXECHANTILLON"]*/?></option>
        <?php endforeach; ?>
@@ -112,7 +113,8 @@
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fas fa-sort-numeric-up"></i> </span>
         </div>
-        <input class="form-control" type="number" name="quantite" required min="0">
+
+        <input class="form-control" type="number" name="quantite" min="0">
       </div>
       <br/>
 

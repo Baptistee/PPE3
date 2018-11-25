@@ -276,7 +276,7 @@ class PdoGsb {
 
     public function getCR() {
         try {
-            $req="SELECT VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite  JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM";
+            $req="SELECT VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite  JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM ORDER BY RAP_NUM";
             $res = PdoGsb::$monPdo->query($req);
             $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
             return $ligne;
