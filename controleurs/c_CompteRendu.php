@@ -26,7 +26,6 @@ switch($_GET['action']){
             $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
             $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
             $pdo->ajouterEchantillon($_SESSION['vis_matricule'], $max, $_POST['medic'], $_POST['quantite']);
-            var_dump($pdo);
             include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
             break;
         }

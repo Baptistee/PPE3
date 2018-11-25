@@ -311,8 +311,8 @@ class PdoGsb {
             $res=PdoGsb::$monPdo->prepare($req);
             $res->bindValue(':numV', $numV, PDO::PARAM_STR);
             $res->bindValue(':numR', $numR, PDO::PARAM_INT);
-            $res->bindValue(':numM', $numM, PDO::PARAM_INT);
-            $res->bindValue(':qt', $qt, PDO::PARAM_STR);
+            $res->bindValue(':numM', $numM, PDO::PARAM_STR);
+            $res->bindValue(':qt', $qt, PDO::PARAM_INT);
             $res->execute();
         }
         catch (Exception $ex) {

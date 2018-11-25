@@ -13,8 +13,8 @@
               <!--<th scope="col">Numéro du praticien</th>-->
               <th scope="col">Nom du praticien</th>
               <th scope="col">Date du rapport</th>
-              <th scope="col">Bilan du rapport</th>
               <th scope="col">Motif du rapport</th>
+              <th scope="col">Bilan du rapport</th>
               <th scope="col">Remplaçant</th>
               <th scope="col">Échantillons</th>
             </tr>
@@ -28,8 +28,8 @@
                   <!--<td><?=$value["PRA_NUM"]?></td>-->
                   <td><?=$value["PRA_NOM"].' '.$value["PRA_PRENOM"]?></td>
                   <td><?=$value["RAP_DATE"]?></td>
-                  <td><?=$value["RAP_BILAN"]?></td>
                   <td><?=$value["RAP_MOTIF"]?></td>
+                  <td><?=$value["RAP_BILAN"]?></td>
                   <td><?php
                   if ($value['REMPL'] == 0) {
                     echo 'Aucun remplacement';
@@ -38,7 +38,7 @@
                     echo 'Remplacé';
                   }
                   ?></td>
-                  <td><a href="index.php?uc=gererCR&action=details&id=<?= $value["RAP_NUM"]?>">Détail </a></td>
+                  <td><a href="index.php?uc=gererCR&action=details&id=<?= $value["RAP_NUM"]?>">Détail</a></td>
                 </tr>
                <?php endforeach; ?>
           </tbody>
