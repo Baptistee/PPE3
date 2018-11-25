@@ -2,19 +2,33 @@
 include("vues/NavBar/v_NavBar.php");
 //$action = $_REQUEST['action'];
 switch($_GET['action']){
+
         case 'saisirCR':{
+
+            //liste des médicaments
+            $LesMedicaments = $pdo->GetListeMedicament();
+            //liste des praticiens
             $lesPraticiens = $pdo->getLesPraticiens();
             include('vues/CR/v_insererCompte.php');
             break;
         }
+
         case 'saisir':{
-            $max = $pdo->getNewId();
-            $max++;
-          $rempl = 0;
-          if (isset($_POST['rempl'])) {
-            $rempl = 1;
-          }
+            //Auto incrémentation
+            $max = $pdo->getNewId(); //récupère le plus grand ID
+            $max++;                 //et lui ajoute 1
+            //création et instanciations à 0 de  la variable remplaçant
+            $rempl = 0;
+            if (isset($_POST['rempl'])) { //si checkbox est coché
+            $rempl = 1; //alors variable rempalcant devient 1 -> le booléen est donc true
+            }
+            //insertion dans la bdd
             $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
+            $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
+            $pdo->ajouterEchantillon($_SESSION['vis_matricule'], $max, $_POST['medic'], $_POST['quantite']);
+            var_dump($pdo);
+            include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
+            break;
         }
 
         case 'consulterCR':{
@@ -24,10 +38,7 @@ switch($_GET['action']){
         }
         case 'details':{
             try{
-            $id =  $_REQUEST['id'];
-            var_dump($id);
-            $lesEchantillons = $pdo->getDetailsEchantillons($id);
-            var_dump($lesEchantillons);
+            $lesEchantillons = $pdo->getDetailsEchantillons($_REQUEST['id']);
             include('vues/CR/v_consulterCompteDetails.php');
         }
         catch (Exception $ex) {

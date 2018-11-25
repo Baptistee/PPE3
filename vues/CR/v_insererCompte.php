@@ -22,7 +22,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-calendar-alt"></i> </span>
           </div>
-          <input class="form-control" type="date" name="date" id="date">
+          <input class="form-control" type="date" name="date" id="date" required>
         </div>
         <br/>
 
@@ -32,7 +32,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-user"></i> </span>
           </div>
-          <select class="form-control" name="pra" value="<?=$value["PRA_NUM"]?>">
+          <select class="form-control" name="pra" value="<?=$value["PRA_NUM"]?>" required>
             <?php foreach ($lesPraticiens as $key => $value):?>
               <option value="<?=$value["PRA_NUM"]?>"><?=$value["PRA_NOM"].' '.$value["PRA_PRENOM"].' ('.$value["PRA_COEFNOTORIETE"].')'?></option>
             <?php endforeach; ?>
@@ -59,12 +59,19 @@
       <br/>-->
 
       <!-- Ramplacant -->
-      Un remplaçant a t-il réalisé la visite à la place du praticien (ou du visiteur) ?
+      <!--Un remplaçant a t-il réalisé la visite à la place du praticien (ou du visiteur) ?
       <div class="form-group input-group" style="">
         <input type="checkbox" class="form-check-input" name="rempl" style="margin-left:1em; margin-top:1em;">
       </div>
-      <br/>
+      <br/>-->
 
+      <div class="form-group input-group">
+        <input class="form-control " type="text" name="motif" readonly="readonly" value="Un remplaçant a t-il réalisé la visite ?">
+          <div class="input-group-prepend">
+            <span class="input-group-text" style="width=52%;"><input type="checkbox" class="form-check-input" name="rempl" style="margin-left:0.2%;margin-top:0.3%;"><i class="far fa-square" style="opacity:50%;"></i></span>
+          </div>
+      </div>
+      <br/>
 
       <!-- Motif -->
       Motif
@@ -72,7 +79,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fas fa-edit"></i> </span>
         </div>
-        <input class="form-control" type="text" name="motif">
+        <input class="form-control" type="text" name="motif" required>
       </div>
       <br/>
 
@@ -82,17 +89,35 @@
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fas fa-edit"></i> </span>
         </div>
-        <textarea class="form-control" rows="5" name="bilan"></textarea>
+        <textarea class="form-control" rows="5" name="bilan" required></textarea>
       </div>
       <br/>
 
       <h3>Échantillons</h3>
       <br/>
-      <select class="form-control" name="prod">
-        <option>cc</option>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fas fa-pills"></i> </span>
+        </div>
+      <select class="form-control" name="medic" value="<?=$med['MED_DEPOTLEGAL']?>" required>
+      <?php foreach ($LesMedicaments as $key => $med):?>
+          <option value="<?=$med["MED_DEPOTLEGAL"]?>"><?=$med["MED_DEPOTLEGAL"].' '.$med["MED_NOMCOMMERCIAL"].' '. $med["Fam_code"]/*.' '.$med["FAM_LIBELLE"].' '.$med["MED_PRIXECHANTILLON"]*/?></option>
+       <?php endforeach; ?>
       </select>
+    </div>
+    <br/>
+
+      Quantité
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fas fa-sort-numeric-up"></i> </span>
+        </div>
+        <input class="form-control" type="number" name="quantite" required min="0">
+      </div>
+      <br/>
+
     </br></br>
-    <button class="btn btn-primary btn-block" >Valider</button>
+    <button class="btn btn-primary btn-block">Valider</button>
   </form>
   <p class="note">Note: Le rapport sera crée par <?= $_SESSION['nom'].' '.$_SESSION['prenom'];?> le <?=date('d-m-y');?></p>
 </article>

@@ -1,4 +1,3 @@
-var_dump($lesEchantillons);
 <table id="tableaumedicament" class="table text-center table-striped table-bordered" style="width: 100%">
     <thead>
         <tr>
@@ -24,7 +23,6 @@ var_dump($lesEchantillons);
                 <td><?=$value["OFF_QTE"]?></td>
             </tr>
         <?php endforeach;
-        var_dump($lesEchantillons);
         ?>
     </tbody>
 </table>

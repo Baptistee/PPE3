@@ -305,9 +305,15 @@ class PdoGsb {
         }
     }
 
-    public function ajouterEchantillon($numCR, $numMed, $quantité){
+    public function ajouterEchantillon($numV, $numR, $numM, $qt){
         try {
-
+            $req="INSERT INTO offrir (VIS_MATRICULE, RAP_NUM, MED_DEPOTLEGAL, OFF_QTE) VALUES (:numV, :numR, :numM, :qt)";
+            $res=PdoGsb::$monPdo->prepare($req);
+            $res->bindValue(':numV', $numV, PDO::PARAM_STR);
+            $res->bindValue(':numR', $numR, PDO::PARAM_INT);
+            $res->bindValue(':numM', $numM, PDO::PARAM_INT);
+            $res->bindValue(':qt', $qt, PDO::PARAM_STR);
+            $res->execute();
         }
         catch (Exception $ex) {
             $ex->getMessage();
@@ -317,12 +323,9 @@ class PdoGsb {
     public function getDetailsEchantillons($id) {
         try {
             $req="select * from offrir INNER JOIN offrir ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL where offrir.RAP_NUM = :pid ";
-            var_dump($req);
             $prep= PdoGsb::$monPdo->prepare($req);
             $prep->bindValue(':pid', $id, PDO::PARAM_INT);
-            var_dump($prep);
             return $prep->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($prep);
         }
         catch (Exception $ex) {
             $ex->getMessage();
