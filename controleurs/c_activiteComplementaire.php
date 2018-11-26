@@ -31,6 +31,7 @@ switch ($_GET["action"]) {
     case "ajouterPraticienDansACBDD":
 
         $pdo->AjouterPraticienDansAC($_SESSION['cac_AC_NUM'], $_POST["numPraticien"], $_POST["spe"]);
+
         $lesAC = $pdo->getLesACDuVisiteur($_SESSION['vis_matricule']);
         $lesPraticiens = $pdo->getLesPraticiensPasInvite($_SESSION['cac_AC_NUM']);
         $_POST["activite"] = $_SESSION['cac_AC_NUM'];
@@ -47,10 +48,16 @@ switch ($_GET["action"]) {
 
     case "particperAC":
 
+        $lesAC = $pdo->getLesAC();
+
         include("vues/AC/v_participerAC.php");break;
 
 
     case "particperACBDD":
+
+        $pdo->insertVisiteurDansAC($_POST['AC'], $_POST['visiteur'], $_POST['frais']);
+
+        $lesAC = $pdo->getLesAC();
 
         include("vues/AC/v_participerAC.php");break;
 }
