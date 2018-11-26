@@ -211,14 +211,52 @@ class PdoGsb {
     }
 
 
-    // Permet de recuperer les AC crees par le visiteur
+    // Permet de recuperer les AC crees par le visiteur.
     public function getLesACDuVisiteur($mat) {
-        $req = "SELECT AC_NUM, AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF FROM activite_compl, visiteur WHERE AC_RESPONSABLE = :mat GROUP BY AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF"; // probleme enlever group by corriger plusieurs retour.
-        $rs = PdoGsb::$monPdo->prepare($req);
-        $rs->bindValue(':mat', $mat, PDO::PARAM_STR);
-        $rs->execute();
-        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
-        return $ligne;
+        try {
+            $req = "SELECT AC_NUM, AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF FROM activite_compl, visiteur WHERE AC_RESPONSABLE = :mat GROUP BY AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF"; // probleme enlever group by corriger plusieurs retour.
+            $rs = PdoGsb::$monPdo->prepare($req);
+            $rs->bindValue(':mat', $mat, PDO::PARAM_STR);
+            $rs->execute();
+            $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+            return $ligne;
+        }
+
+        catch (Exception $ex) {
+            ?>
+            <div class="contenu">
+                <div class="alert alert-danger">
+                    <h6>Erreur</h6>
+                    <h6><?=$ex->getMessage();?></h6>
+                </div>
+            </div>
+            <?php
+        }
+
+    }
+
+
+    // Permet de participer a une activite complementaire.
+    public function insertVisiteurDansAC($AC, $visiteur, $frais) {
+        try {
+            $req = "INSERT INTO realiser (AC_NUM, VIS_MATRICULE, REAMTTFRAIS) VALUES (:AC, :visiteur, :frais)";
+            $res=PdoGsb::$monPdo->prepare($req);
+            $res->bindValue(':AC', $AC, PDO::PARAM_INT);
+            $res->bindValue(':visiteur', $visiteur, PDO::PARAM_INT);
+            $res->bindValue(':frais', $frais, PDO::PARAM_INT);
+            $res->execute();
+        }
+
+        catch (Exception $ex) {
+            ?>
+            <div class="contenu">
+                <div class="alert alert-danger">
+                    <h6>Erreur</h6>
+                    <h6><?=$ex->getMessage();?></h6>
+                </div>
+            </div>
+            <?php
+        }
     }
 
 
