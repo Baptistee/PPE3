@@ -1,21 +1,8 @@
 #particles-js{
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
 }
 
 .card {
-    position:;
-}
-
-#login{
-  background:#fff;
-  opacity:0.9;
-  padding:2em;
-  border:#ccc 2px solid;
-  position:absolute;
-  top:100px;
-  left:50px;
+    
 }

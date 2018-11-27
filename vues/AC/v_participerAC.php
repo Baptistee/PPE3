@@ -3,10 +3,7 @@
 
 <br>
 
-<div id="particles-js">
-
-    <span class="border border-danger">
-<div class="card mx-auto w-50" style="max-width: 500px;">
+<div class="card mx-auto w-50 position-sticky" style="max-width: 500px;">
 
     <div class="card-header text-center">
         <h4 class="card-title mt-3 text-center">Participer à une activité complémentaire</h4>
@@ -46,9 +43,8 @@
         </article>
     </div>
 </div>
-</span>
 
-</div>
+<div id="particles-js"></div>
 
 <link rel="stylesheet" media="screen" href="css/particle.css">
 <script src="js/particle.js"></script>
