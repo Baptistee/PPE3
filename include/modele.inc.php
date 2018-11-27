@@ -3,21 +3,17 @@
 class PdoGsb {
 
     // Attributs
-    private static $serveur='mysql:host=localhost';
-    private static $bdd='dbname=gsb_visiteurs';
-    private static $user='root' ;
-    private static $mdp='' ;
+    private static $serveur='mysql:host=mysql-ppe3.alwaysdata.net';
+    private static $bdd='dbname=ppe3_visiteurs';
+    private static $user='ppe3_admin' ;
+    private static $mdp='root' ;
     private static $monPdo;
     private static $monPdoGsb=null;
 
-
-    /* BDD EN LIGNE
-    private static $serveur='mysql:host=www.db4free.net';
-    private static $bdd='dbname=gsb_visiteurs';
-    private static $user='sql7266501' ;
-    private static $mdp='w4dn1WGxkf' ;
-    private static $monPdo;
-    private static $monPdoGsb=null;
+    /*
+    Lien: https://phpmyadmin.alwaysdata.com/
+    Identifiant: ppe3_admin
+    Mdp: root
     */
 
 
