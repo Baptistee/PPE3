@@ -5,16 +5,6 @@
     <article class="card-body mx-auto" style="max-width: 400px;">
       <form method="post" action="index.php?uc=gererCR&action=saisir">
 
-        <!-- Numéro de Rapport -->
-        <!--Numéro de Rapport
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fas fa-briefcase"></i> </span>
-          </div>
-          <input class="form-control" type="text" name="numR">
-        </div>
-        <br/>-->
-
 
         <!-- Date Visite-->
         Date de la visite
@@ -41,29 +31,6 @@
         </div>
         <br/>
       </tr>
-
-      <!-- PETITE NOTE -> AU LIEU D'AFFICHER LE COEFFCIENT
-      DANS UN AUTRE TEXT BOX, JE PEUX L'AFFICHER DIRECTEMENT
-      DANS LA SELECTION DU PRATICIEN EXEMPLE: JEAN NOYER (233)
-      A VOIR AVEC LE CLIENT #TATAPOUPOU
-      -->
-
-      <!-- Coefficient
-      Coefficient
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fas fa-user"></i> </span>
-        </div>
-        <input class="form-control" type="text" name="coef">
-      </div>
-      <br/>-->
-
-      <!-- Ramplacant -->
-      <!--Un remplaçant a t-il réalisé la visite à la place du praticien (ou du visiteur) ?
-      <div class="form-group input-group" style="">
-        <input type="checkbox" class="form-check-input" name="rempl" style="margin-left:1em; margin-top:1em;">
-      </div>
-      <br/>-->
 
       <div class="form-group input-group">
         <input class="form-control " type="text" name="motif" readonly="readonly" value="Un remplaçant a t-il réalisé la visite ?">

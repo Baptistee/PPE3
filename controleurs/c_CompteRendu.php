@@ -17,18 +17,59 @@ switch($_GET['action']){
         //Auto incrémentation
         $max = $pdo->getNewId(); //récupère le plus grand ID
         $max++;                 //et lui ajoute 1
-        //création et instanciations à 0 de  la variable remplaçant
+        //création et instanciations à 0 de la variable remplaçant
         $rempl = 0;
         if (isset($_POST['rempl'])) { //si checkbox est coché
-            $rempl = 1; //alors variable rempalcant devient 1 -> le booléen est donc true
+            $rempl = 1; //alors variable remplacant devient 1 -> le booléen est donc true
         }
-        //insertion dans la bdd
-        $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
-        $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
-            $pdo->ajouterEchantillon($_SESSION['vis_matricule'], $max, $_POST['medic'], $_POST['quantite']);
-            echo 'oups on peux pas faire le échantillon !!!';
 
-        include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
+        if ($_REQUEST['medic'] == "") {
+            //Alerte
+                ?>
+                <div class="contenu">
+                    <div class="alert alert-success">
+                        <h6>Le rapport numéro <?= $max; ?> a bien été crée, sans échantillon.</h6>
+                    </div>
+                </div>
+                <?php
+                //insertion dans la bdd
+                $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
+                $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
+                include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
+                break;
+        }
+        elseif ($_REQUEST['medic'] == $_POST['medic']) { //Sinon, si un médicament est sélectionner
+            if (!isset($_POST['quantite']) || $_POST['quantite']==0 ) { //mais qu'il n'y a pas de quantité
+                //Alerte
+                    ?>
+                    <div class="contenu">
+                        <div class="alert alert-warning">
+                            <h6>Erreur ! Le rapport numéro <?= $max; ?> a bien été crée, mais sans échantillon. Le champs 'quantité' est manquant ou égal à zéro.</h6>
+                        </div>
+                    </div>
+                    <?php
+                    //insertion dans la bdd
+                    $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
+                    $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
+                    include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
+                    break;
+            }
+
+                //Alerte
+                    ?>
+                    <div class="contenu">
+                        <div class="alert alert-success">
+                            <h6>Le rapport numéro <?= $max; ?> a bien été crée, avec échantillon.</h6>
+                        </div>
+                    </div>
+                    <?php
+                    //insertion dans la bdd
+                    $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
+                    $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
+                    $pdo->ajouterEchantillon($_SESSION['vis_matricule'], $max, $_POST['medic'], $_POST['quantite']);
+                    include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
+                    break;
+        }
         break;
     }
 
