@@ -2,12 +2,15 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 <br>
+
+<div id="particles-js">
+
+    <span class="border border-danger">
 <div class="card mx-auto w-50" style="max-width: 500px;">
 
     <div class="card-header text-center">
         <h4 class="card-title mt-3 text-center">Participer à une activité complémentaire</h4>
     </div>
-    
     <div class="card-body">
         <article class="card-body mx-auto" style="max-width: 400px;">
 
@@ -43,3 +46,10 @@
         </article>
     </div>
 </div>
+</span>
+
+</div>
+
+<link rel="stylesheet" media="screen" href="css/particle.css">
+<script src="js/particle.js"></script>
+<script src="js/particle-config.js"></script>
