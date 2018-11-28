@@ -28,7 +28,8 @@ switch($_GET['action']){
             ?>
             <div class="container">
                 <div class="contenu">
-                    <div class="alert alert-success">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <h6>Le rapport numéro <?= $max; ?> a bien été crée, sans échantillon.</h6>
                     </div>
                 </div>
@@ -46,7 +47,8 @@ switch($_GET['action']){
                 ?>
                 <div class="container">
                     <div class="contenu">
-                        <div class="alert alert-warning">
+                        <div class="alert alert-warning alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                             <h6>Erreur ! Le rapport numéro <?= $max; ?> a bien été crée, mais sans échantillon. Le champs 'quantité' est manquant.</h6>
                         </div>
                     </div>
@@ -63,7 +65,8 @@ switch($_GET['action']){
             ?>
             <div class="container">
                 <div class="contenu">
-                    <div class="alert alert-success">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <h6>Le rapport numéro <?= $max; ?> a bien été crée, avec échantillon.</h6>
                     </div>
                 </div>
