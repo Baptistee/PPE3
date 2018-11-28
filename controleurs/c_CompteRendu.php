@@ -25,10 +25,30 @@ switch($_GET['action']){
 
         if ($_REQUEST['medic'] == "") {
             //Alerte
-                ?>
+            ?>
+            <div class="container">
                 <div class="contenu">
                     <div class="alert alert-success">
                         <h6>Le rapport numéro <?= $max; ?> a bien été crée, sans échantillon.</h6>
+                    </div>
+                </div>
+            </div>
+            <?php
+            //insertion dans la bdd
+            $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
+            $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
+            include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
+            break;
+        }
+        elseif ($_REQUEST['medic'] == $_POST['medic']) { //Sinon, si un médicament est sélectionner
+            if (!isset($_POST['quantite']) || $_POST['quantite']==0 ) { //mais qu'il n'y a pas de quantité
+                //Alerte
+                ?>
+                <div class="container">
+                    <div class="contenu">
+                        <div class="alert alert-warning">
+                            <h6>Erreur ! Le rapport numéro <?= $max; ?> a bien été crée, mais sans échantillon. Le champs 'quantité' est manquant.</h6>
+                        </div>
                     </div>
                 </div>
                 <?php
@@ -37,38 +57,24 @@ switch($_GET['action']){
                 $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
                 include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
                 break;
-        }
-        elseif ($_REQUEST['medic'] == $_POST['medic']) { //Sinon, si un médicament est sélectionner
-            if (!isset($_POST['quantite']) || $_POST['quantite']==0 ) { //mais qu'il n'y a pas de quantité
-                //Alerte
-                    ?>
-                    <div class="contenu">
-                        <div class="alert alert-warning">
-                            <h6>Erreur ! Le rapport numéro <?= $max; ?> a bien été crée, mais sans échantillon. Le champs 'quantité' est manquant ou égal à zéro.</h6>
-                        </div>
-                    </div>
-                    <?php
-                    //insertion dans la bdd
-                    $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
-                    $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
-                    include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
-                    break;
             }
 
-                //Alerte
-                    ?>
-                    <div class="contenu">
-                        <div class="alert alert-success">
-                            <h6>Le rapport numéro <?= $max; ?> a bien été crée, avec échantillon.</h6>
-                        </div>
+            //Alerte
+            ?>
+            <div class="container">
+                <div class="contenu">
+                    <div class="alert alert-success">
+                        <h6>Le rapport numéro <?= $max; ?> a bien été crée, avec échantillon.</h6>
                     </div>
-                    <?php
-                    //insertion dans la bdd
-                    $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
-                    $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
-                    $pdo->ajouterEchantillon($_SESSION['vis_matricule'], $max, $_POST['medic'], $_POST['quantite']);
-                    include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
-                    break;
+                </div>
+            </div>
+            <?php
+            //insertion dans la bdd
+            $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
+            $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
+            $pdo->ajouterEchantillon($_SESSION['vis_matricule'], $max, $_POST['medic'], $_POST['quantite']);
+            include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
+            break;
         }
         break;
     }

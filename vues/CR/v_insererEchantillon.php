@@ -37,7 +37,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fas fa-sort-numeric-up"></i> </span>
         </div>
-        <input class="form-control" type="number" name="quantite" required min="0">
+        <input class="form-control" type="number" name="quantite" required min="1">
       </div>
       <br/>
 
