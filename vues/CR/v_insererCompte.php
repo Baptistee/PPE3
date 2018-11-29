@@ -2,7 +2,7 @@
 <div class="card mx-auto w-50" style="max-width: 500px;">
   <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Rapport de visite</h4></div>
   <div class="card-body">
-    <article class="card-body mx-auto page-section" style="max-width: 400px;">
+    <article class="card-body mx-auto" style="max-width: 400px;">
       <form method="post" action="index.php?uc=gererCR&action=saisir">
 
 
@@ -91,8 +91,3 @@
 </article>
 </div>
 </div>
-
-<div id="particles-js"></div>
-<link rel="stylesheet" media="screen" href="css/particle.css">
-<script src="js/particle.js"></script>
-<script src="js/particle-config.js"></script>
