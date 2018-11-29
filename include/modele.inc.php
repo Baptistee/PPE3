@@ -293,7 +293,7 @@ class PdoGsb {
 */
 ###############################################################################
 
-
+    //Récupère le plus grand ID des comptes rendus
     public function getNewId(){
         try {
             $req="SELECT MAX(RAP_NUM) AS max FROM rapport_visite";
@@ -306,6 +306,7 @@ class PdoGsb {
         }
     }
 
+    //Récupère la totalité des comptes rendus avec
     public function getCR() {
         try {
             $req="SELECT VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite  JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM ORDER BY RAP_NUM";
@@ -354,10 +355,13 @@ class PdoGsb {
 
     public function getDetailsEchantillons($id) {
         try {
-            $req="select * from offrir INNER JOIN offrir ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL where offrir.RAP_NUM = :pid ";
+            $req="SELECT * FROM offrir /*INNER JOIN offrir ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL*/ WHERE RAP_NUM = :pid";
+            var_dump($req);
             $prep= PdoGsb::$monPdo->prepare($req);
-            $prep->bindValue(':pid', $id, PDO::PARAM_INT);
-            return $prep->fetchAll(PDO::FETCH_ASSOC);
+            $prep->bindValue('pid', $id, PDO::PARAM_INT);
+            $prep->execute();
+            $ligne = $prep->fetchAll(PDO::FETCH_ASSOC);
+            return $ligne;
         }
         catch (Exception $ex) {
             $ex->getMessage();
