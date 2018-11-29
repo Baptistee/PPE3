@@ -58,6 +58,13 @@
                     <textarea name="motif" class="form-control" placeholder="Motif" type="text"></textarea>
                 </div>
 
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-euro-sign"></i> </span>
+                    </div>
+                    <input name="frais" class="form-control" placeholder="Frais (euros)" type="text">
+                </div>
+
                 <div class="form-group">
                     <button class="btn-slide btn-5 btn-5a icon-arrow-right btn-block"><span> Valider </span></button>
                 </div>

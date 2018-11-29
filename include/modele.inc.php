@@ -153,8 +153,59 @@ class PdoGsb {
     }
 
 
+    // Permet de participer a une activite complementaire.
+    public function insertVisiteurDansAC($AC, $visiteur, $frais) {
+        try {
+            $req = "INSERT INTO realiser VALUES (:AC, :visiteur, :frais)";
+            $res=PdoGsb::$monPdo->prepare($req);
+            $res->bindValue(':AC', $AC, PDO::PARAM_INT);
+            $res->bindValue(':visiteur', $visiteur, PDO::PARAM_STR);
+            $res->bindValue(':frais', $frais, PDO::PARAM_STR);
+            $res->execute();
+        }
+
+        catch (Exception $ex) {
+            ?>
+            <div class="contenu">
+                <div class="alert alert-danger">
+                    <h6>Erreur</h6>
+                    <h6><?=$ex->getMessage();?></h6>
+                </div>
+            </div>
+            <?php
+        }
+    }
+
+
+    // Permet de recuperer l'AC qui vient d'etre cree.
+    public function getACEnCours($resp, $lieu, $theme) {
+        try {
+            $req="SELECT activite_compl.AC_NUM FROM visiteur INNER JOIN activite_compl ON visiteur.VIS_MATRICULE = activite_compl.AC_RESPONSABLE WHERE activite_compl.AC_RESPONSABLE = :resp AND activite_compl.AC_THEME = :theme AND activite_compl.AC_LIEU = :lieu";
+            $res=PdoGsb::$monPdo->prepare($req);
+
+            $res->bindValue(':lieu', $lieu, PDO::PARAM_STR);
+            $res->bindValue(':theme', $theme, PDO::PARAM_STR);
+            $res->bindValue(':resp', $resp, PDO::PARAM_STR);
+            $res->execute();
+            $AC = $res->fetch();
+            return $AC;
+        }
+
+        catch (Exception $ex) {
+            ?>
+            <div class="contenu">
+                <div class="alert alert-danger">
+                    <h6>Erreur insertion des activites</h6>
+                    <h6><?=$ex->getMessage();?></h6>
+                </div>
+            </div>
+            <?php
+        }
+    }
+
+
     // Permet d'ajouter une activite complementaire.
-    public function InsererActivite($jour, $mois, $annee, $lieu, $theme, $motif, $resp) {
+    public function InsererActivite($jour, $mois, $annee, $lieu, $theme, $motif, $resp, $frais) {
         try {
             $date=$annee.'-'.$mois.'-'.$jour;
             $req="INSERT INTO activite_compl (AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF, AC_RESPONSABLE) VALUES (:date, :lieu, :theme, :motif, :resp)";
@@ -178,6 +229,8 @@ class PdoGsb {
             </div>
             <?php
         }
+
+
     }
 
 
@@ -232,10 +285,10 @@ class PdoGsb {
     }
 
 
-    // Permet de participer a une activite complementaire.
-    public function insertVisiteurDansAC($AC, $visiteur, $frais) {
+    // Permet de recuperer une activite complementaire qui n'est pas occupe par le visiteur.
+    public function getLesACDispo($visiteur) {
         try {
-            $req = "INSERT INTO realiser (AC_NUM, VIS_MATRICULE, REAMTTFRAIS) VALUES (:AC, :visiteur, :frais)";
+            $req = "SELECT AC_NUM, AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF FROM activite_compl INNER JOIN rea WHERE AC_RESPONSABLE = :mat GROUP BY AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF";
             $res=PdoGsb::$monPdo->prepare($req);
             $res->bindValue(':AC', $AC, PDO::PARAM_INT);
             $res->bindValue(':visiteur', $visiteur, PDO::PARAM_INT);
