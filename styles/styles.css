@@ -102,14 +102,6 @@ input, button, textarea, select {
 }
 
 
-button {
-  width : 60px;
-  height : 30px;
-  text-align:center;
-  vertical-align:middle;
-}
-
-
 input:hover, textarea:hover, select:hover {
   background-color : #FAFAE6;
   cursor : pointer;
@@ -338,14 +330,23 @@ table.listeLegere th.libelle {
 }
 
 
+.note {
+    font-size: 12px;
+}
+
+
+/*
+██████   ██████   ██████  ████████ ███████ ████████ ██████   █████  ██████
+██   ██ ██    ██ ██    ██    ██    ██         ██    ██   ██ ██   ██ ██   ██
+██████  ██    ██ ██    ██    ██    ███████    ██    ██████  ███████ ██████
+██   ██ ██    ██ ██    ██    ██         ██    ██    ██   ██ ██   ██ ██
+██████   ██████   ██████     ██    ███████    ██    ██   ██ ██   ██ ██
+*/
+
 .card {
     border-radius: 1em;
 }
 
-
-.note {
-    font-size: 12px;
-}
 
 /*
 .page-section {

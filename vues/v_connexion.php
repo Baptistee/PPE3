@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" name="btnSubmit" class="btn btn-primary btn-lg" value="Connexion" />
+                    <button type="submit" name="btnSubmit" class="btn btn-primary btn-block"> Connexion </button>
                 </div>
 
             </div>
