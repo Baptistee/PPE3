@@ -43,9 +43,3 @@
         </article>
     </div>
 </div>
-
-<div id="particles-js"></div>
-
-<link rel="stylesheet" media="screen" href="css/particle.css">
-<script src="js/particle.js"></script>
-<script src="js/particle-config.js"></script>
