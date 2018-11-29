@@ -1,5 +1,6 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<link rel="stylesheet" href="././css/button-slide.css" />
 
 <br>
 <div class="card mx-auto w-50" style="max-width: 500px;">
@@ -64,7 +65,7 @@
                     </div>
 
                     <div class="form-group mx-auto">
-                        <button type="submit" class="btn btn-primary btn-block">Ajouter</button>
+                        <button class="btn-slide btn-5 btn-5a icon-arrow-right btn-block"><span> Valider </span></button>
                     </div>
 
                 </form>
