@@ -408,8 +408,7 @@ class PdoGsb {
 
     public function getDetailsEchantillons($id) {
         try {
-            $req="SELECT * FROM offrir /*INNER JOIN offrir ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL*/ WHERE RAP_NUM = :pid";
-            var_dump($req);
+            $req="SELECT * FROM offrir INNER JOIN medicament ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL WHERE RAP_NUM = :pid";
             $prep= PdoGsb::$monPdo->prepare($req);
             $prep->bindValue('pid', $id, PDO::PARAM_INT);
             $prep->execute();

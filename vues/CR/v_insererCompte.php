@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<link rel="stylesheet" href="././css/button-slide.css" />
 <div class="card mx-auto w-50" style="max-width: 500px;">
   <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Rapport de visite</h4></div>
   <div class="card-body">
@@ -85,7 +86,7 @@
       <br/>
 
     </br></br>
-    <button class="btn btn-primary btn-block">Valider</button>
+    <button class="btn-slide btn-5 btn-5a icon-arrow-right btn-block">Valider</button>
   </form>
   <p class="note">Note: Le rapport sera crée par <?= $_SESSION['nom'].' '.$_SESSION['prenom'];?> le <?=date('d-m-y');?></p>
 </article>
