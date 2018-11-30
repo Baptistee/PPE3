@@ -90,8 +90,6 @@ switch($_GET['action']){
     case 'details':{
         try{
             $lesEchantillons = $pdo->getDetailsEchantillons($_REQUEST['id']);
-            var_dump($_REQUEST['id']);
-            var_dump($lesEchantillons);
             include('vues/CR/v_consulterCompteDetails.php');
         }
         catch (Exception $ex) {
