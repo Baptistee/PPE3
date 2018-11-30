@@ -40,7 +40,7 @@
 
 <br>
 
-<div class="card mx-auto">
+<div class="card mx-auto" style="max-width: 80%;">
     <div class="card-header text-center">Tableau des activités complémentaires</div>
     <div class="card-body">
         <div class="row">
@@ -60,7 +60,6 @@
                     <div class="card text-white bg-primary">
                         <div class="card-body">
                             <h3 class="card-title"><?=$valeur["AC_THEME"]?></h3>
-                            <p class="card-text">à <?=$valeur["AC_LIEU"]?>, le <?=$valeur["AC_DATE"]?></p>
                             <a href="https://fr.wikipedia.org/wiki/<?=$valeur["AC_THEME"]?>" class="btn btn-outline-light">Accéder</a>
                         </div>
                         <div class="card-footer"><?=$valeur["AC_MOTIF"]?></div>

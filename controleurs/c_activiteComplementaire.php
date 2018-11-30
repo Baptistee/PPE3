@@ -15,9 +15,7 @@ switch ($_GET["action"]) {
 
         $AC = $pdo->getACEnCours($_SESSION['vis_matricule'], $_POST["theme"], $_POST["lieu"]);
 
-        var_dump($AC);
-
-        $pdo->insertVisiteurDansAC($AC, $_SESSION['vis_matricule'], $_POST["frais"]);
+        $pdo->insertVisiteurDansAC($AC['AC_NUM'], $_SESSION['vis_matricule'], $_POST["frais"]);
 
         include("vues/AC/v_saisirNouvelleActivite.php");break;
 

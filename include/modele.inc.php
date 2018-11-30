@@ -157,6 +157,7 @@ class PdoGsb {
     // Permet de participer a une activite complementaire.
     public function insertVisiteurDansAC($AC, $visiteur, $frais) {
         try {
+            $AC = (int)$AC;
             $req = "INSERT INTO realiser VALUES (:AC, :visiteur, :frais)";
             $res=PdoGsb::$monPdo->prepare($req);
             $res->bindValue(':AC', $AC, PDO::PARAM_INT);
@@ -188,7 +189,7 @@ class PdoGsb {
             $res->bindValue(':theme', $theme, PDO::PARAM_STR);
             $res->bindValue(':resp', $resp, PDO::PARAM_STR);
             $res->execute();
-            $AC = $res->fetch();
+            $AC = $res->fetch(PDO::FETCH_ASSOC);
             return $AC;
         }
 
