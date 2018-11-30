@@ -46,24 +46,13 @@ class PdoGsb {
 
 
     public function getInfosVisiteur($login,$mdp) {
-        $req="select "
-                    ."visiteur.VIS_MATRICULE, "
-                    ."VIS_NOM, "
-                    ."VIS_PRENOM, "
-                    ."travailler.TRA_ROLE "
-                ."FROM "
-                    ."visiteur "
-                ."INNER JOIN travailler ON visiteur.VIS_MATRICULE = travailler.VIS_MATRICULE "
-                ."WHERE "
-                    ."LOGIN = 'test' AND MDP = 'test' AND `DATEFIN` IS NULL";
+        $req="select visiteur.VIS_MATRICULE, VIS_NOM, VIS_PRENOM, travailler.TRA_ROLE FROM visiteur INNER JOIN travailler ON visiteur.VIS_MATRICULE = travailler.VIS_MATRICULE WHERE LOGIN = '$login' and MDP = '$mdp' and `DATEFIN` IS NULL";
 
-        //$req="select VIS_MATRICULE, VIS_NOM ,VIS_PRENOM from visiteur where LOGIN = 'test' and MDP = 'test'";
         $rs = PdoGsb::$monPdo->query($req);
         $ligne = $rs->fetch(PDO::FETCH_ASSOC);
 
         return $ligne;
     }
-
 
     public function getLesVisiteurs() {
         $req="select * from visiteur";
