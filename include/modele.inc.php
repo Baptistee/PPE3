@@ -12,6 +12,7 @@ class PdoGsb {
 
     /*
     Lien: https://phpmyadmin.alwaysdata.com/
+    Des fois ils demandent le serveur: mysql-ppe3.alwaysdata.net
     Identifiant: ppe3_admin
     Mdp: root
     */

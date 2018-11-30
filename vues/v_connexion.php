@@ -1,6 +1,6 @@
-<div class="container contact-form">
+<div class="container connexion-form">
 
-    <div class="contact-image">
+    <div class="connexion-image">
         <img src="./images/pinguLogo.png" alt="rocket_contact"/>
     </div>
 
