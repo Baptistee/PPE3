@@ -45,11 +45,28 @@ class PdoGsb {
     }
 
 
-    public function getInfosVisiteur($login,$mdp) {
-        $req="select VIS_MATRICULE, VIS_NOM ,VIS_PRENOM from visiteur where LOGIN = '$login' and MDP = '$mdp'";
-        //$req="select VIS_MATRICULE, VIS_NOM ,VIS_PRENOM from visiteur where LOGIN = 'test' and MDP = 'test'";
-        $rs = PdoGsb::$monPdo->query($req);
-        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+    public function getInfosUtilisateur($login,$mdp) {
+      //recuparation du type de compte et du login
+      $req="select login, typeCompte from utilisateur where LOGIN = '$login' and MDP = '$mdp'";
+
+      $rs = PdoGsb::$monPdo->query($req);
+      $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+
+      //recuparation des informations de l'utilisateur en fonction de son type de comptes
+      switch ($ligne['typeCompte']) {
+        case 'VIS':
+            $req="select VIS_MATRICULE, VIS_NOM ,VIS_PRENOM from visiteur where LOGIN = '$login'";
+            //$req="select VIS_MATRICULE, VIS_NOM ,VIS_PRENOM from visiteur where LOGIN = 'test' and MDP = 'test'";
+            $rs = PdoGsb::$monPdo->query($req);
+            $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+            return $ligne;
+          break;
+
+        default:
+          // code...
+          break;
+      }
+
         return $ligne;
     }
 
