@@ -365,6 +365,7 @@ class PdoGsb {
         }
     }
 
+
     //Récupère la totalité des comptes rendus avec
     public function getCR() {
         try {
@@ -397,6 +398,7 @@ class PdoGsb {
         }
     }
 
+
     public function ajouterEchantillon($numV, $numR, $numM, $qt){
         try {
             $req="INSERT INTO offrir (VIS_MATRICULE, RAP_NUM, MED_DEPOTLEGAL, OFF_QTE) VALUES (:numV, :numR, :numM, :qt)";
@@ -412,9 +414,39 @@ class PdoGsb {
         }
     }
 
+
     public function getDetailsEchantillons($id) {
         try {
             $req="SELECT * FROM offrir INNER JOIN medicament ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL WHERE RAP_NUM = :pid";
+            $prep= PdoGsb::$monPdo->prepare($req);
+            $prep->bindValue('pid', $id, PDO::PARAM_INT);
+            $prep->execute();
+            $ligne = $prep->fetchAll(PDO::FETCH_ASSOC);
+            return $ligne;
+        }
+        catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+
+    public function getEchantillons() {
+        try {
+            $req="SELECT * FROM offrir INNER JOIN medicament ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL";
+            $prep= PdoGsb::$monPdo->prepare($req);
+            $prep->execute();
+            $ligne = $prep->fetchAll(PDO::FETCH_ASSOC);
+            return $ligne;
+        }
+        catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+
+    public function getRapport($id) {
+        try {
+            $req="SELECT VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite  JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM WHERE RAP_NUM = :pid ORDER BY RAP_NUM";
             $prep= PdoGsb::$monPdo->prepare($req);
             $prep->bindValue('pid', $id, PDO::PARAM_INT);
             $prep->execute();
