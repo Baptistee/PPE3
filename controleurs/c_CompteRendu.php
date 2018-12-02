@@ -109,6 +109,18 @@ switch($_GET['action']){
     case 'insereEch':{
         try{
             $pdo->ajouterEchantillon($_SESSION['vis_matricule'], $_POST['rapport'], $_POST['medic'], $_POST['quantite']);
+            ?>
+            <div class="container">
+                <div class="contenu">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <h6>L'échantillon pour le rapport numéro <?= $_POST['rapport'] ?> a bien été crée</h6>
+                    </div>
+                </div>
+            </div>
+            <?php
+                $lesEchantillons = $pdo->getEchantillons();
+                include('vues/CR/v_consulterEchantillons.php');
         }
         catch (Exception $ex) {
             $ex->getMessage();

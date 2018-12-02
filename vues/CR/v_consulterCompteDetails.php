@@ -27,7 +27,6 @@ else{
         <article class="card-body mx-auto" style="max-width: 80%;">
         <table id="tableEchantillons" class="table table-hover table-bordered" style="">
           <thead>
-              <th scope="col">Numéro Rapport</th>
               <th scope="col">Dépot légal</th>
               <th scope="col">Nom Médicament</th>
               <th scope="col">Code Famille</th>
@@ -37,7 +36,6 @@ else{
           <tbody>
               <?php foreach ($lesEchantillons as $key => $value):?>
                 <tr>
-                    <td scope="row"><?=$value["RAP_NUM"]?></td>
                     <td><?=$value["MED_DEPOTLEGAL"]?></td>
                     <td><?=$value["MED_NOMCOMMERCIAL"]?></td>
                     <td><?=$value["FAM_CODE"]?></td>
