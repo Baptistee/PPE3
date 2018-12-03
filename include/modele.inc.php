@@ -10,10 +10,21 @@ class PdoGsb {
     private static $monPdo;
     private static $monPdoGsb=null;
 
-    /*
+    /* phpMyAdmin
     Lien: https://phpmyadmin.alwaysdata.com/
     Identifiant: ppe3_admin
     Mdp: root
+    */
+
+    /* Site en ligne
+    Lien: http://ppe3.alwaysdata.net
+    */
+
+    /* FTP
+    Hote: ppe3.alwaysdata.net
+    Id: ppe3_admin
+    Mdp: root
+    Port: 21
     */
 
 
