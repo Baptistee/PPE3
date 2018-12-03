@@ -8,6 +8,7 @@
                 <a class="dropdown-item" href="index.php?uc=gererCR&action=consulterCR">Consulter les Rapports</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="index.php?uc=gererCR&action=insererEchantillon">Ajouter un échantillon</a>
+                <a class="dropdown-item" href="index.php?uc=gererCR&action=consulterEch">Consulter les Échantillons</a>
             </div>
         </li>
 

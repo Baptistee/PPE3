@@ -15,7 +15,24 @@
             <?php
 
                 if(isset($_SESSION['login'])) {
-                    include("MenuVisiteur.php");
+                  switch ($_SESSION['TRA_ROLE']) {
+                    case 'Visiteur':
+                        include("MenuVisiteur.php");
+                      break;
+
+                    case 'Délégué':
+                        include("MenuDelegue.php");
+                      break;
+
+                    case 'Responsable':
+                        include("MenuResponsable.php");
+                      break;
+
+                    default:
+                        include("MenuConnection.php");
+                      break;
+                  }
+
                 }
 
                 else {

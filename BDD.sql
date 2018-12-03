@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 23 nov. 2018 à 15:03
--- Version du serveur :  5.7.23
--- Version de PHP :  7.2.10
+-- Host: mysql-ppe3.alwaysdata.net
+-- Generation Time: Nov 30, 2018 at 01:36 PM
+-- Server version: 10.2.17-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,45 +19,43 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `gsb_visiteurs`
+-- Database: `ppe3_visiteurs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `activite_compl`
+-- Table structure for table `activite_compl`
 --
 
-DROP TABLE IF EXISTS `activite_compl`;
-CREATE TABLE IF NOT EXISTS `activite_compl` (
-  `AC_NUM` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `activite_compl` (
+  `AC_NUM` int(11) NOT NULL,
   `AC_DATE` datetime DEFAULT NULL,
   `AC_LIEU` varchar(25) DEFAULT NULL,
   `AC_THEME` varchar(10) DEFAULT NULL,
   `AC_MOTIF` varchar(50) DEFAULT NULL,
-  `AC_RESPONSABLE` varchar(10) NOT NULL,
-  PRIMARY KEY (`AC_NUM`),
-  KEY `AC_RESPONSABLE` (`AC_RESPONSABLE`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `AC_RESPONSABLE` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `activite_compl`
+-- Dumping data for table `activite_compl`
 --
 
 INSERT INTO `activite_compl` (`AC_NUM`, `AC_DATE`, `AC_LIEU`, `AC_THEME`, `AC_MOTIF`, `AC_RESPONSABLE`) VALUES
 (1, '2000-01-01 00:00:00', 'Marseille', 'Sida', 'Pas cool', 'a131'),
 (2, '2018-11-01 00:00:00', 'Paris', 'Cancer', 'Pas trop cool', 'c3'),
 (3, '2018-01-01 00:00:00', 'Carthage', 'Virus', 'Pas sympa.', 'a131'),
-(4, '2018-01-01 00:00:00', 'Rognac', 'Fistule', 'Aie ça fait mal.', 'a131');
+(4, '2018-01-01 00:00:00', 'Rognac', 'Fistule', 'Aie ça fait mal.', 'a131'),
+(5, '2018-01-01 00:00:00', 'Sodome', 'Autisme', 'Ce n\'est pas cool.', 'a131'),
+(28, '2018-01-01 00:00:00', 'Marseille', 'Maladie', 'Outch', 'a131');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dosage`
+-- Table structure for table `dosage`
 --
 
-DROP TABLE IF EXISTS `dosage`;
-CREATE TABLE IF NOT EXISTS `dosage` (
+CREATE TABLE `dosage` (
   `DOS_CODE` varchar(10) NOT NULL,
   `DOS_QUANTITE` varchar(10) DEFAULT NULL,
   `DOS_UNITE` varchar(10) DEFAULT NULL
@@ -66,18 +64,16 @@ CREATE TABLE IF NOT EXISTS `dosage` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `famille`
+-- Table structure for table `famille`
 --
 
-DROP TABLE IF EXISTS `famille`;
-CREATE TABLE IF NOT EXISTS `famille` (
+CREATE TABLE `famille` (
   `FAM_CODE` varchar(3) NOT NULL,
-  `FAM_LIBELLE` varchar(80) DEFAULT NULL,
-  PRIMARY KEY (`FAM_CODE`)
+  `FAM_LIBELLE` varchar(80) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `famille`
+-- Dumping data for table `famille`
 --
 
 INSERT INTO `famille` (`FAM_CODE`, `FAM_LIBELLE`) VALUES
@@ -105,21 +101,17 @@ INSERT INTO `famille` (`FAM_CODE`, `FAM_LIBELLE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `inviter`
+-- Table structure for table `inviter`
 --
 
-DROP TABLE IF EXISTS `inviter`;
-CREATE TABLE IF NOT EXISTS `inviter` (
+CREATE TABLE `inviter` (
   `AC_NUM` int(11) NOT NULL,
   `PRA_NUM` smallint(6) NOT NULL,
-  `SPECIALISTEON` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`AC_NUM`,`PRA_NUM`),
-  KEY `fk_inviter_activite_compl1_idx` (`AC_NUM`),
-  KEY `fk_inviter_praticien1_idx` (`PRA_NUM`)
+  `SPECIALISTEON` bit(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `inviter`
+-- Dumping data for table `inviter`
 --
 
 INSERT INTO `inviter` (`AC_NUM`, `PRA_NUM`, `SPECIALISTEON`) VALUES
@@ -133,19 +125,17 @@ INSERT INTO `inviter` (`AC_NUM`, `PRA_NUM`, `SPECIALISTEON`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `labo`
+-- Table structure for table `labo`
 --
 
-DROP TABLE IF EXISTS `labo`;
-CREATE TABLE IF NOT EXISTS `labo` (
+CREATE TABLE `labo` (
   `LAB_CODE` varchar(2) NOT NULL,
   `LAB_NOM` varchar(10) DEFAULT NULL,
-  `LAB_CHEFVENTE` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`LAB_CODE`)
+  `LAB_CHEFVENTE` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `labo`
+-- Dumping data for table `labo`
 --
 
 INSERT INTO `labo` (`LAB_CODE`, `LAB_NOM`, `LAB_CHEFVENTE`) VALUES
@@ -156,11 +146,10 @@ INSERT INTO `labo` (`LAB_CODE`, `LAB_NOM`, `LAB_CHEFVENTE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `medicament`
+-- Table structure for table `medicament`
 --
 
-DROP TABLE IF EXISTS `medicament`;
-CREATE TABLE IF NOT EXISTS `medicament` (
+CREATE TABLE `medicament` (
   `MED_DEPOTLEGAL` varchar(10) NOT NULL,
   `MED_NOMCOMMERCIAL` varchar(25) DEFAULT NULL,
   `FAM_CODE` varchar(3) DEFAULT NULL,
@@ -168,13 +157,11 @@ CREATE TABLE IF NOT EXISTS `medicament` (
   `MED_EFFETS` varchar(255) DEFAULT NULL,
   `MED_CONTREINDIC` varchar(255) DEFAULT NULL,
   `MED_PRIXECHANTILLON` float DEFAULT NULL,
-  `MED_PRESENTATION` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`MED_DEPOTLEGAL`),
-  KEY `fk_medicament_famille1_idx` (`FAM_CODE`)
+  `MED_PRESENTATION` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `medicament`
+-- Dumping data for table `medicament`
 --
 
 INSERT INTO `medicament` (`MED_DEPOTLEGAL`, `MED_NOMCOMMERCIAL`, `FAM_CODE`, `MED_COMPOSITION`, `MED_EFFETS`, `MED_CONTREINDIC`, `MED_PRIXECHANTILLON`, `MED_PRESENTATION`) VALUES
@@ -210,53 +197,45 @@ INSERT INTO `medicament` (`MED_DEPOTLEGAL`, `MED_NOMCOMMERCIAL`, `FAM_CODE`, `ME
 -- --------------------------------------------------------
 
 --
--- Structure de la table `offrir`
+-- Table structure for table `offrir`
 --
 
-DROP TABLE IF EXISTS `offrir`;
-CREATE TABLE IF NOT EXISTS `offrir` (
+CREATE TABLE `offrir` (
   `VIS_MATRICULE` varchar(10) NOT NULL,
   `RAP_NUM` int(11) NOT NULL,
   `MED_DEPOTLEGAL` varchar(10) NOT NULL,
-  `OFF_QTE` smallint(6) DEFAULT NULL,
-  PRIMARY KEY (`VIS_MATRICULE`,`RAP_NUM`,`MED_DEPOTLEGAL`),
-  KEY `fk_offrir_rapport_visite1_idx` (`VIS_MATRICULE`),
-  KEY `fk_offrir_rapport_visite2_idx` (`RAP_NUM`),
-  KEY `fk_offrir_medicament1_idx` (`MED_DEPOTLEGAL`)
+  `OFF_QTE` smallint(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `offrir`
+-- Dumping data for table `offrir`
 --
 
 INSERT INTO `offrir` (`VIS_MATRICULE`, `RAP_NUM`, `MED_DEPOTLEGAL`, `OFF_QTE`) VALUES
+('a131', 10, 'EVILR7', 7),
+('a131', 11, 'EQUILARX6', 5),
 ('a17', 4, '3MYC7', 3),
 ('a17', 4, 'AMOX45', 12);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `posseder`
+-- Table structure for table `posseder`
 --
 
-DROP TABLE IF EXISTS `posseder`;
-CREATE TABLE IF NOT EXISTS `posseder` (
+CREATE TABLE `posseder` (
   `PRA_NUM` smallint(6) NOT NULL,
   `SPE_CODE` varchar(5) NOT NULL,
-  `POS_DIPLOME` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`PRA_NUM`,`SPE_CODE`),
-  KEY `fk_posseder_specialite1_idx` (`SPE_CODE`),
-  KEY `fk_posseder_praticien1_idx` (`PRA_NUM`)
+  `POS_DIPLOME` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `praticien`
+-- Table structure for table `praticien`
 --
 
-DROP TABLE IF EXISTS `praticien`;
-CREATE TABLE IF NOT EXISTS `praticien` (
+CREATE TABLE `praticien` (
   `PRA_NUM` smallint(6) NOT NULL,
   `PRA_NOM` varchar(25) DEFAULT NULL,
   `PRA_PRENOM` varchar(30) DEFAULT NULL,
@@ -264,13 +243,11 @@ CREATE TABLE IF NOT EXISTS `praticien` (
   `PRA_CP` varchar(5) DEFAULT NULL,
   `PRA_VILLE` varchar(25) DEFAULT NULL,
   `PRA_COEFNOTORIETE` float DEFAULT NULL,
-  `TYP_CODE` varchar(3) DEFAULT NULL,
-  PRIMARY KEY (`PRA_NUM`),
-  KEY `fk_praticien_type_praticien1_idx` (`TYP_CODE`)
+  `TYP_CODE` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `praticien`
+-- Dumping data for table `praticien`
 --
 
 INSERT INTO `praticien` (`PRA_NUM`, `PRA_NOM`, `PRA_PRENOM`, `PRA_ADRESSE`, `PRA_CP`, `PRA_VILLE`, `PRA_COEFNOTORIETE`, `TYP_CODE`) VALUES
@@ -366,84 +343,79 @@ INSERT INTO `praticien` (`PRA_NUM`, `PRA_NOM`, `PRA_PRENOM`, `PRA_ADRESSE`, `PRA
 -- --------------------------------------------------------
 
 --
--- Structure de la table `prescrire`
+-- Table structure for table `prescrire`
 --
 
-DROP TABLE IF EXISTS `prescrire`;
-CREATE TABLE IF NOT EXISTS `prescrire` (
+CREATE TABLE `prescrire` (
   `MED_DEPOTLEGAL` varchar(10) NOT NULL,
   `TIN_CODE` varchar(5) NOT NULL,
   `DOS_CODE` varchar(10) NOT NULL,
-  `PRE_POSOLOGIE` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`MED_DEPOTLEGAL`,`TIN_CODE`,`DOS_CODE`),
-  KEY `fk_prescrire_medicament1_idx` (`MED_DEPOTLEGAL`),
-  KEY `fk_prescrire_type_individu1_idx` (`TIN_CODE`),
-  KEY `fk_prescrire_dosage1_idx` (`DOS_CODE`)
+  `PRE_POSOLOGIE` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rapport_visite`
+-- Table structure for table `rapport_visite`
 --
 
-DROP TABLE IF EXISTS `rapport_visite`;
-CREATE TABLE IF NOT EXISTS `rapport_visite` (
+CREATE TABLE `rapport_visite` (
   `VIS_MATRICULE` varchar(10) NOT NULL,
   `RAP_NUM` int(11) NOT NULL,
   `PRA_NUM` smallint(6) DEFAULT NULL,
-  `RAP_DATE` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `RAP_DATE` timestamp NULL DEFAULT current_timestamp(),
   `RAP_BILAN` varchar(255) DEFAULT NULL,
   `RAP_MOTIF` varchar(255) DEFAULT NULL,
   `VIS_DATE` datetime DEFAULT NULL,
-  `REMPL` tinyint(1) NOT NULL,
-  PRIMARY KEY (`VIS_MATRICULE`,`RAP_NUM`),
-  KEY `fk_rapport_visite_praticien1_idx` (`PRA_NUM`),
-  KEY `fk_rapport_visite_visiteur1_idx` (`VIS_MATRICULE`)
+  `REMPL` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `rapport_visite`
+-- Dumping data for table `rapport_visite`
 --
 
 INSERT INTO `rapport_visite` (`VIS_MATRICULE`, `RAP_NUM`, `PRA_NUM`, `RAP_DATE`, `RAP_BILAN`, `RAP_MOTIF`, `VIS_DATE`, `REMPL`) VALUES
 ('a131', 3, 23, '2018-04-17 22:00:00', 'Médecin curieux, à recontacter en décembre pour réunion', 'Actualisation annuelle', NULL, 0),
 ('a131', 7, 41, '2018-03-22 23:00:00', 'RAS\r\nChangement de tel : 05 89 89 89 89', 'Rapport Annuel', NULL, 0),
+('a131', 8, 7, '2018-11-28 10:32:25', 'Il est bien beau', 'Inspection du cochonet', '2018-11-28 00:00:00', 1),
+('a131', 9, 22, '2018-11-28 10:46:49', 'Problème respiratoire, solution:\r\nAblation à la hache, du nez', 'Ablation du nez', '2018-11-13 00:00:00', 0),
+('a131', 10, 42, '2018-11-29 14:17:12', 'Amygdales qui ressemble concrètement à des balles de tennis, et des petites envies de vomir qui font plaisir ! :))', 'Angine rouge', '2018-10-10 00:00:00', 0),
+('a131', 11, 1, '2018-11-30 09:02:24', 'J\'ai le cancer', 'Coucou', '2018-11-05 00:00:00', 1),
 ('a17', 4, 4, '2018-05-20 22:00:00', 'Changement de direction, redéfinition de la politique médicamenteuse, recours au générique', 'Baisse activité', NULL, 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `realiser`
+-- Table structure for table `realiser`
 --
 
-DROP TABLE IF EXISTS `realiser`;
-CREATE TABLE IF NOT EXISTS `realiser` (
+CREATE TABLE `realiser` (
   `AC_NUM` int(11) NOT NULL,
   `VIS_MATRICULE` varchar(10) NOT NULL,
-  `REA_MTTFRAIS` float DEFAULT NULL,
-  PRIMARY KEY (`AC_NUM`,`VIS_MATRICULE`),
-  KEY `fk_realiser_visiteur1_idx` (`VIS_MATRICULE`),
-  KEY `fk_realiser_activite_compl1_idx` (`AC_NUM`)
+  `REA_MTTFRAIS` varchar(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `realiser`
+--
+
+INSERT INTO `realiser` (`AC_NUM`, `VIS_MATRICULE`, `REA_MTTFRAIS`) VALUES
+(1, 'a131', '12.2');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `region`
+-- Table structure for table `region`
 --
 
-DROP TABLE IF EXISTS `region`;
-CREATE TABLE IF NOT EXISTS `region` (
+CREATE TABLE `region` (
   `REG_CODE` varchar(2) NOT NULL,
   `SEC_CODE` varchar(1) DEFAULT NULL,
-  `REG_NOM` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`REG_CODE`),
-  KEY `fk_region_secteur_idx` (`SEC_CODE`)
+  `REG_NOM` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `region`
+-- Dumping data for table `region`
 --
 
 INSERT INTO `region` (`REG_CODE`, `SEC_CODE`, `REG_NOM`) VALUES
@@ -473,18 +445,16 @@ INSERT INTO `region` (`REG_CODE`, `SEC_CODE`, `REG_NOM`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `secteur`
+-- Table structure for table `secteur`
 --
 
-DROP TABLE IF EXISTS `secteur`;
-CREATE TABLE IF NOT EXISTS `secteur` (
+CREATE TABLE `secteur` (
   `SEC_CODE` varchar(1) NOT NULL,
-  `SEC_LIBELLE` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`SEC_CODE`)
+  `SEC_LIBELLE` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `secteur`
+-- Dumping data for table `secteur`
 --
 
 INSERT INTO `secteur` (`SEC_CODE`, `SEC_LIBELLE`) VALUES
@@ -497,18 +467,16 @@ INSERT INTO `secteur` (`SEC_CODE`, `SEC_LIBELLE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `specialite`
+-- Table structure for table `specialite`
 --
 
-DROP TABLE IF EXISTS `specialite`;
-CREATE TABLE IF NOT EXISTS `specialite` (
+CREATE TABLE `specialite` (
   `SPE_CODE` varchar(5) NOT NULL,
-  `SPE_LIBELLE` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`SPE_CODE`)
+  `SPE_LIBELLE` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `specialite`
+-- Dumping data for table `specialite`
 --
 
 INSERT INTO `specialite` (`SPE_CODE`, `SPE_LIBELLE`) VALUES
@@ -560,23 +528,19 @@ INSERT INTO `specialite` (`SPE_CODE`, `SPE_LIBELLE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `travailler`
+-- Table structure for table `travailler`
 --
 
-DROP TABLE IF EXISTS `travailler`;
-CREATE TABLE IF NOT EXISTS `travailler` (
+CREATE TABLE `travailler` (
   `VIS_MATRICULE` varchar(10) NOT NULL,
   `DATEDEBUT` datetime NOT NULL,
   `REG_CODE` varchar(2) NOT NULL,
   `TRA_ROLE` varchar(11) DEFAULT NULL,
-  `DATEFIN` datetime DEFAULT NULL,
-  PRIMARY KEY (`VIS_MATRICULE`,`DATEDEBUT`,`REG_CODE`),
-  KEY `fk_travailler_visiteur1_idx` (`VIS_MATRICULE`),
-  KEY `fk_travailler_region1_idx` (`REG_CODE`)
+  `DATEFIN` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `travailler`
+-- Dumping data for table `travailler`
 --
 
 INSERT INTO `travailler` (`VIS_MATRICULE`, `DATEDEBUT`, `REG_CODE`, `TRA_ROLE`, `DATEFIN`) VALUES
@@ -668,32 +632,28 @@ INSERT INTO `travailler` (`VIS_MATRICULE`, `DATEDEBUT`, `REG_CODE`, `TRA_ROLE`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `type_individu`
+-- Table structure for table `type_individu`
 --
 
-DROP TABLE IF EXISTS `type_individu`;
-CREATE TABLE IF NOT EXISTS `type_individu` (
+CREATE TABLE `type_individu` (
   `TIN_CODE` varchar(5) NOT NULL,
-  `TIN_LIBELLE` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`TIN_CODE`)
+  `TIN_LIBELLE` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `type_praticien`
+-- Table structure for table `type_praticien`
 --
 
-DROP TABLE IF EXISTS `type_praticien`;
-CREATE TABLE IF NOT EXISTS `type_praticien` (
+CREATE TABLE `type_praticien` (
   `TYP_CODE` varchar(3) NOT NULL,
   `TYP_LIBELLE` varchar(25) DEFAULT NULL,
-  `TYP_LIEU` varchar(35) DEFAULT NULL,
-  PRIMARY KEY (`TYP_CODE`)
+  `TYP_LIEU` varchar(35) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `type_praticien`
+-- Dumping data for table `type_praticien`
 --
 
 INSERT INTO `type_praticien` (`TYP_CODE`, `TYP_LIBELLE`, `TYP_LIEU`) VALUES
@@ -706,25 +666,22 @@ INSERT INTO `type_praticien` (`TYP_CODE`, `TYP_LIBELLE`, `TYP_LIEU`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur`
+-- Table structure for table `utilisateur`
 --
 
-DROP TABLE IF EXISTS `utilisateur`;
-CREATE TABLE IF NOT EXISTS `utilisateur` (
+CREATE TABLE `utilisateur` (
   `login` varchar(20) NOT NULL,
   `mdp` varchar(20) NOT NULL,
-  `typeCompte` varchar(10) NOT NULL,
-  PRIMARY KEY (`login`)
+  `typeCompte` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `visiteur`
+-- Table structure for table `visiteur`
 --
 
-DROP TABLE IF EXISTS `visiteur`;
-CREATE TABLE IF NOT EXISTS `visiteur` (
+CREATE TABLE `visiteur` (
   `VIS_MATRICULE` varchar(10) NOT NULL,
   `VIS_NOM` varchar(25) DEFAULT NULL,
   `VIS_PRENOM` varchar(50) DEFAULT NULL,
@@ -735,15 +692,11 @@ CREATE TABLE IF NOT EXISTS `visiteur` (
   `VIS_VILLE` varchar(30) DEFAULT NULL,
   `VIS_DATEEMBAUCHE` datetime DEFAULT NULL,
   `SEC_CODE` varchar(1) DEFAULT NULL,
-  `LAB_CODE` varchar(2) DEFAULT NULL,
-  PRIMARY KEY (`VIS_MATRICULE`),
-  KEY `fk_visiteur_labo1_idx` (`LAB_CODE`),
-  KEY `fk_visiteur_secteur1_idx` (`SEC_CODE`),
-  KEY `LOGIN` (`LOGIN`)
+  `LAB_CODE` varchar(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `visiteur`
+-- Dumping data for table `visiteur`
 --
 
 INSERT INTO `visiteur` (`VIS_MATRICULE`, `VIS_NOM`, `VIS_PRENOM`, `LOGIN`, `MDP`, `VIS_ADRESSE`, `VIS_CP`, `VIS_VILLE`, `VIS_DATEEMBAUCHE`, `SEC_CODE`, `LAB_CODE`) VALUES
@@ -817,63 +770,214 @@ INSERT INTO `visiteur` (`VIS_MATRICULE`, `VIS_NOM`, `VIS_PRENOM`, `LOGIN`, `MDP`
 ('zzz', 'swiss', 'bourdin', NULL, NULL, NULL, NULL, NULL, '2003-06-18 00:00:00', NULL, 'BC');
 
 --
--- Contraintes pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Contraintes pour la table `activite_compl`
+-- Indexes for table `activite_compl`
+--
+ALTER TABLE `activite_compl`
+  ADD PRIMARY KEY (`AC_NUM`),
+  ADD KEY `AC_RESPONSABLE` (`AC_RESPONSABLE`);
+
+--
+-- Indexes for table `famille`
+--
+ALTER TABLE `famille`
+  ADD PRIMARY KEY (`FAM_CODE`);
+
+--
+-- Indexes for table `inviter`
+--
+ALTER TABLE `inviter`
+  ADD PRIMARY KEY (`AC_NUM`,`PRA_NUM`),
+  ADD KEY `fk_inviter_activite_compl1_idx` (`AC_NUM`),
+  ADD KEY `fk_inviter_praticien1_idx` (`PRA_NUM`);
+
+--
+-- Indexes for table `labo`
+--
+ALTER TABLE `labo`
+  ADD PRIMARY KEY (`LAB_CODE`);
+
+--
+-- Indexes for table `medicament`
+--
+ALTER TABLE `medicament`
+  ADD PRIMARY KEY (`MED_DEPOTLEGAL`),
+  ADD KEY `fk_medicament_famille1_idx` (`FAM_CODE`);
+
+--
+-- Indexes for table `offrir`
+--
+ALTER TABLE `offrir`
+  ADD PRIMARY KEY (`VIS_MATRICULE`,`RAP_NUM`,`MED_DEPOTLEGAL`),
+  ADD KEY `fk_offrir_rapport_visite1_idx` (`VIS_MATRICULE`),
+  ADD KEY `fk_offrir_rapport_visite2_idx` (`RAP_NUM`),
+  ADD KEY `fk_offrir_medicament1_idx` (`MED_DEPOTLEGAL`);
+
+--
+-- Indexes for table `posseder`
+--
+ALTER TABLE `posseder`
+  ADD PRIMARY KEY (`PRA_NUM`,`SPE_CODE`),
+  ADD KEY `fk_posseder_specialite1_idx` (`SPE_CODE`),
+  ADD KEY `fk_posseder_praticien1_idx` (`PRA_NUM`);
+
+--
+-- Indexes for table `praticien`
+--
+ALTER TABLE `praticien`
+  ADD PRIMARY KEY (`PRA_NUM`),
+  ADD KEY `fk_praticien_type_praticien1_idx` (`TYP_CODE`);
+
+--
+-- Indexes for table `prescrire`
+--
+ALTER TABLE `prescrire`
+  ADD PRIMARY KEY (`MED_DEPOTLEGAL`,`TIN_CODE`,`DOS_CODE`),
+  ADD KEY `fk_prescrire_medicament1_idx` (`MED_DEPOTLEGAL`),
+  ADD KEY `fk_prescrire_type_individu1_idx` (`TIN_CODE`),
+  ADD KEY `fk_prescrire_dosage1_idx` (`DOS_CODE`);
+
+--
+-- Indexes for table `rapport_visite`
+--
+ALTER TABLE `rapport_visite`
+  ADD PRIMARY KEY (`VIS_MATRICULE`,`RAP_NUM`),
+  ADD KEY `fk_rapport_visite_praticien1_idx` (`PRA_NUM`),
+  ADD KEY `fk_rapport_visite_visiteur1_idx` (`VIS_MATRICULE`);
+
+--
+-- Indexes for table `realiser`
+--
+ALTER TABLE `realiser`
+  ADD PRIMARY KEY (`AC_NUM`,`VIS_MATRICULE`),
+  ADD KEY `fk_realiser_visiteur1_idx` (`VIS_MATRICULE`),
+  ADD KEY `fk_realiser_activite_compl1_idx` (`AC_NUM`);
+
+--
+-- Indexes for table `region`
+--
+ALTER TABLE `region`
+  ADD PRIMARY KEY (`REG_CODE`),
+  ADD KEY `fk_region_secteur_idx` (`SEC_CODE`);
+
+--
+-- Indexes for table `secteur`
+--
+ALTER TABLE `secteur`
+  ADD PRIMARY KEY (`SEC_CODE`);
+
+--
+-- Indexes for table `specialite`
+--
+ALTER TABLE `specialite`
+  ADD PRIMARY KEY (`SPE_CODE`);
+
+--
+-- Indexes for table `travailler`
+--
+ALTER TABLE `travailler`
+  ADD PRIMARY KEY (`VIS_MATRICULE`,`DATEDEBUT`,`REG_CODE`),
+  ADD KEY `fk_travailler_visiteur1_idx` (`VIS_MATRICULE`),
+  ADD KEY `fk_travailler_region1_idx` (`REG_CODE`);
+
+--
+-- Indexes for table `type_individu`
+--
+ALTER TABLE `type_individu`
+  ADD PRIMARY KEY (`TIN_CODE`);
+
+--
+-- Indexes for table `type_praticien`
+--
+ALTER TABLE `type_praticien`
+  ADD PRIMARY KEY (`TYP_CODE`);
+
+--
+-- Indexes for table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`login`);
+
+--
+-- Indexes for table `visiteur`
+--
+ALTER TABLE `visiteur`
+  ADD PRIMARY KEY (`VIS_MATRICULE`),
+  ADD KEY `fk_visiteur_labo1_idx` (`LAB_CODE`),
+  ADD KEY `fk_visiteur_secteur1_idx` (`SEC_CODE`),
+  ADD KEY `LOGIN` (`LOGIN`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `activite_compl`
+--
+ALTER TABLE `activite_compl`
+  MODIFY `AC_NUM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `activite_compl`
 --
 ALTER TABLE `activite_compl`
   ADD CONSTRAINT `activite_compl_ibfk_1` FOREIGN KEY (`AC_RESPONSABLE`) REFERENCES `visiteur` (`VIS_MATRICULE`);
 
 --
--- Contraintes pour la table `inviter`
+-- Constraints for table `inviter`
 --
 ALTER TABLE `inviter`
   ADD CONSTRAINT `FK_ac` FOREIGN KEY (`AC_NUM`) REFERENCES `activite_compl` (`AC_NUM`),
   ADD CONSTRAINT `FK_inviter_Prat` FOREIGN KEY (`PRA_NUM`) REFERENCES `praticien` (`PRA_NUM`);
 
 --
--- Contraintes pour la table `medicament`
+-- Constraints for table `medicament`
 --
 ALTER TABLE `medicament`
   ADD CONSTRAINT `FK_Medicament_Famille` FOREIGN KEY (`FAM_CODE`) REFERENCES `famille` (`FAM_CODE`);
 
 --
--- Contraintes pour la table `posseder`
+-- Constraints for table `posseder`
 --
 ALTER TABLE `posseder`
   ADD CONSTRAINT `FK_Posseder` FOREIGN KEY (`PRA_NUM`) REFERENCES `praticien` (`PRA_NUM`),
   ADD CONSTRAINT `FK_specialite` FOREIGN KEY (`SPE_CODE`) REFERENCES `specialite` (`SPE_CODE`);
 
 --
--- Contraintes pour la table `praticien`
+-- Constraints for table `praticien`
 --
 ALTER TABLE `praticien`
   ADD CONSTRAINT `FK_type` FOREIGN KEY (`TYP_CODE`) REFERENCES `type_praticien` (`TYP_CODE`);
 
 --
--- Contraintes pour la table `rapport_visite`
+-- Constraints for table `rapport_visite`
 --
 ALTER TABLE `rapport_visite`
   ADD CONSTRAINT `FK_rapport_visiteur` FOREIGN KEY (`VIS_MATRICULE`) REFERENCES `visiteur` (`VIS_MATRICULE`);
 
 --
--- Contraintes pour la table `realiser`
+-- Constraints for table `realiser`
 --
 ALTER TABLE `realiser`
   ADD CONSTRAINT `FK_ac_realiser` FOREIGN KEY (`AC_NUM`) REFERENCES `activite_compl` (`AC_NUM`),
   ADD CONSTRAINT `FK_realiser_visiteur` FOREIGN KEY (`VIS_MATRICULE`) REFERENCES `visiteur` (`VIS_MATRICULE`);
 
 --
--- Contraintes pour la table `travailler`
+-- Constraints for table `travailler`
 --
 ALTER TABLE `travailler`
   ADD CONSTRAINT `FK_travailler_region` FOREIGN KEY (`REG_CODE`) REFERENCES `region` (`REG_CODE`),
   ADD CONSTRAINT `FK_travailler_visiteur` FOREIGN KEY (`VIS_MATRICULE`) REFERENCES `visiteur` (`VIS_MATRICULE`);
 
 --
--- Contraintes pour la table `visiteur`
+-- Constraints for table `visiteur`
 --
 ALTER TABLE `visiteur`
   ADD CONSTRAINT `FK_visiteur_secteur` FOREIGN KEY (`SEC_CODE`) REFERENCES `secteur` (`SEC_CODE`);

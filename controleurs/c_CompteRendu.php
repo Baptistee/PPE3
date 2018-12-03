@@ -13,6 +13,7 @@ switch($_GET['action']){
         break;
     }
 
+
     case 'saisir':{
         //Auto incrémentation
         $max = $pdo->getNewId(); //récupère le plus grand ID
@@ -39,7 +40,6 @@ switch($_GET['action']){
             $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
             $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
             include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
-            break;
         }
         elseif ($_REQUEST['medic'] == $_POST['medic']) { //Sinon, si un médicament est sélectionner
             if (!isset($_POST['quantite']) || $_POST['quantite']==0 ) { //mais qu'il n'y a pas de quantité
@@ -58,7 +58,6 @@ switch($_GET['action']){
                 $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
                 $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
                 include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
-                break;
             }
 
             //Alerte
@@ -77,10 +76,10 @@ switch($_GET['action']){
             $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
             $pdo->ajouterEchantillon($_SESSION['vis_matricule'], $max, $_POST['medic'], $_POST['quantite']);
             include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
-            break;
         }
         break;
     }
+
 
     case 'consulterCR':{
         $lesCompteRendu = $pdo->getCR();
@@ -90,8 +89,6 @@ switch($_GET['action']){
     case 'details':{
         try{
             $lesEchantillons = $pdo->getDetailsEchantillons($_REQUEST['id']);
-            var_dump($_REQUEST['id']);
-            var_dump($lesEchantillons);
             include('vues/CR/v_consulterCompteDetails.php');
         }
         catch (Exception $ex) {
@@ -112,6 +109,35 @@ switch($_GET['action']){
     case 'insereEch':{
         try{
             $pdo->ajouterEchantillon($_SESSION['vis_matricule'], $_POST['rapport'], $_POST['medic'], $_POST['quantite']);
+            ?>
+            <div class="container">
+                <div class="contenu">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <h6>L'échantillon pour le rapport numéro <?= $_POST['rapport'] ?> a bien été crée</h6>
+                    </div>
+                </div>
+            </div>
+            <?php
+                $lesEchantillons = $pdo->getEchantillons();
+                include('vues/CR/v_consulterEchantillons.php');
+        }
+        catch (Exception $ex) {
+            $ex->getMessage();
+        }
+        break;
+    }
+
+    case 'consulterEch':{
+        $lesEchantillons = $pdo->getEchantillons();
+        include('vues/CR/v_consulterEchantillons.php');
+        break;
+    }
+
+    case 'detailsRapport':{
+        try{
+            $lesCompteRendu = $pdo->getRapport($_REQUEST['id']);
+            include('vues/CR/v_consulterRapDetails.php');
         }
         catch (Exception $ex) {
             $ex->getMessage();

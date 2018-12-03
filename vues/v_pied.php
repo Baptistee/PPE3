@@ -1,4 +1,23 @@
 
+        </br>
+
+        <!--
+
+        <footer id="myFooter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h2 class="logo"><a href="#"> GSB </a></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2018 GSB </p>
+            </div>
+        </footer>
+
+        -->
+
         <div id="particles-js"></div>
 
         <script src="js/particle.js"></script>

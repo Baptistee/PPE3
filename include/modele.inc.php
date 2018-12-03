@@ -12,6 +12,7 @@ class PdoGsb {
 
     /* phpMyAdmin
     Lien: https://phpmyadmin.alwaysdata.com/
+    Des fois ils demandent le serveur: mysql-ppe3.alwaysdata.net
     Identifiant: ppe3_admin
     Mdp: root
     */
@@ -56,13 +57,13 @@ class PdoGsb {
 
 
     public function getInfosVisiteur($login,$mdp) {
-        $req="select VIS_MATRICULE, VIS_NOM ,VIS_PRENOM from visiteur where LOGIN = '$login' and MDP = '$mdp'";
-        //$req="select VIS_MATRICULE, VIS_NOM ,VIS_PRENOM from visiteur where LOGIN = 'test' and MDP = 'test'";
+        $req="select visiteur.VIS_MATRICULE, VIS_NOM, VIS_PRENOM, travailler.TRA_ROLE FROM visiteur INNER JOIN travailler ON visiteur.VIS_MATRICULE = travailler.VIS_MATRICULE WHERE LOGIN = '$login' and MDP = '$mdp' and `DATEFIN` IS NULL";
+
         $rs = PdoGsb::$monPdo->query($req);
         $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+
         return $ligne;
     }
-
 
     public function getLesVisiteurs() {
         $req="select * from visiteur";
@@ -189,16 +190,16 @@ class PdoGsb {
 
 
     // Permet de recuperer l'AC qui vient d'etre cree.
-    public function getACEnCours($resp, $lieu, $theme) {
+    public function getLAC($resp, $lieu, $theme) {
         try {
             $req="SELECT activite_compl.AC_NUM FROM visiteur INNER JOIN activite_compl ON visiteur.VIS_MATRICULE = activite_compl.AC_RESPONSABLE WHERE activite_compl.AC_RESPONSABLE = :resp AND activite_compl.AC_THEME = :theme AND activite_compl.AC_LIEU = :lieu";
-            $res=PdoGsb::$monPdo->prepare($req);
+            $res2=PdoGsb::$monPdo->prepare($req);
 
-            $res->bindValue(':lieu', $lieu, PDO::PARAM_STR);
-            $res->bindValue(':theme', $theme, PDO::PARAM_STR);
-            $res->bindValue(':resp', $resp, PDO::PARAM_STR);
-            $res->execute();
-            $AC = $res->fetch();
+            $res2->bindValue(':lieu', $lieu, PDO::PARAM_STR);
+            $res2->bindValue(':theme', $theme, PDO::PARAM_STR);
+            $res2->bindValue(':resp', $resp, PDO::PARAM_STR);
+            $res2->execute();
+            $AC=$res2->fetchColumn();
             return $AC;
         }
 
@@ -216,7 +217,7 @@ class PdoGsb {
 
 
     // Permet d'ajouter une activite complementaire.
-    public function InsererActivite($jour, $mois, $annee, $lieu, $theme, $motif, $resp, $frais) {
+    public function InsererActivite($jour, $mois, $annee, $lieu, $theme, $motif, $resp) {
         try {
             $date=$annee.'-'.$mois.'-'.$jour;
             $req="INSERT INTO activite_compl (AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF, AC_RESPONSABLE) VALUES (:date, :lieu, :theme, :motif, :resp)";
@@ -228,6 +229,11 @@ class PdoGsb {
             $res->bindValue(':motif', $motif, PDO::PARAM_STR);
             $res->bindValue(':resp', $resp, PDO::PARAM_STR);
             $res->execute();
+
+            $req="SELECT LAST_INSERT_ID()";
+            $res=PdoGsb::$monPdo->query($req);
+            $no=$res->fetchColumn();
+            return $no;
         }
 
         catch (Exception $ex) {
@@ -297,12 +303,12 @@ class PdoGsb {
 
 
     // Permet de recuperer une activite complementaire qui n'est pas occupe par le visiteur.
-    public function getLesACDispo($visiteur) {
+    public function getLesACLibre($visiteur) {
         try {
             $req = "SELECT AC_NUM, AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF FROM activite_compl INNER JOIN rea WHERE AC_RESPONSABLE = :mat GROUP BY AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF";
             $res=PdoGsb::$monPdo->prepare($req);
             $res->bindValue(':AC', $AC, PDO::PARAM_INT);
-            $res->bindValue(':visiteur', $visiteur, PDO::PARAM_INT);
+            $res->bindValue(':visiteur', $visiteur, PDO::PARAM_STR);
             $res->bindValue(':frais', $frais, PDO::PARAM_INT);
             $res->execute();
         }
@@ -370,6 +376,7 @@ class PdoGsb {
         }
     }
 
+
     //Récupère la totalité des comptes rendus avec
     public function getCR() {
         try {
@@ -402,6 +409,7 @@ class PdoGsb {
         }
     }
 
+
     public function ajouterEchantillon($numV, $numR, $numM, $qt){
         try {
             $req="INSERT INTO offrir (VIS_MATRICULE, RAP_NUM, MED_DEPOTLEGAL, OFF_QTE) VALUES (:numV, :numR, :numM, :qt)";
@@ -417,10 +425,39 @@ class PdoGsb {
         }
     }
 
+
     public function getDetailsEchantillons($id) {
         try {
-            $req="SELECT * FROM offrir /*INNER JOIN offrir ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL*/ WHERE RAP_NUM = :pid";
-            var_dump($req);
+            $req="SELECT * FROM offrir INNER JOIN medicament ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL WHERE RAP_NUM = :pid";
+            $prep= PdoGsb::$monPdo->prepare($req);
+            $prep->bindValue('pid', $id, PDO::PARAM_INT);
+            $prep->execute();
+            $ligne = $prep->fetchAll(PDO::FETCH_ASSOC);
+            return $ligne;
+        }
+        catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+
+    public function getEchantillons() {
+        try {
+            $req="SELECT * FROM offrir INNER JOIN medicament ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL";
+            $prep= PdoGsb::$monPdo->prepare($req);
+            $prep->execute();
+            $ligne = $prep->fetchAll(PDO::FETCH_ASSOC);
+            return $ligne;
+        }
+        catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+
+    public function getRapport($id) {
+        try {
+            $req="SELECT VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite  JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM WHERE RAP_NUM = :pid ORDER BY RAP_NUM";
             $prep= PdoGsb::$monPdo->prepare($req);
             $prep->bindValue('pid', $id, PDO::PARAM_INT);
             $prep->execute();

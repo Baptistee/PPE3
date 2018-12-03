@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 if(!isset($_REQUEST['action'])){
 	$_REQUEST['action'] = 'demandeConnexion';
@@ -22,15 +22,17 @@ switch($action){
 			$id = $visiteur['VIS_MATRICULE'];
 			$nom =  $visiteur['VIS_NOM'];
 			$prenom = $visiteur['VIS_PRENOM'];
+			$type = $visiteur['TRA_ROLE'];
 
 			 // mémorise les variables de session
 			$_SESSION['vis_matricule']= $id;
 			$_SESSION['login']= $login;
-            $_SESSION['nom']= $nom;
-            $_SESSION['prenom']= $prenom;
-            include("vues/NavBar/v_NavBar.php");
+		    $_SESSION['nom']= $nom;
+		    $_SESSION['prenom']= $prenom;
+			$_SESSION['TRA_ROLE'] = $type;
+      include("vues/NavBar/v_NavBar.php");
 
-            include('vues/v_accueil.php');
+    	include('vues/v_accueil.php');
 			}
 		break;
 	}
