@@ -61,9 +61,15 @@
       </div>
       <br/>
 
+
+
       <h3>Échantillons</h3>
+      <!--
+      <button onclick="myFunction()">+</button>
       <br/>
-      <div class="form-group input-group">
+  -->
+      <br/>
+      <div class="echantil form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fas fa-pills"></i> </span>
         </div>
