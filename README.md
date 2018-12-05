@@ -1,4 +1,4 @@
-![alt text][logo] 
+![alt text][logo]
 # GSB : Galaxy Swiss Bourdin
 - Baptiste : Gérer les activités complémentaires
 - Clément : Médicaments et Connexion d'un visiteur
@@ -18,9 +18,12 @@
 -
 
 # Compte Rendue
-- Ajouter un compte rendu dans la bdd
-- Ajouter des échantillons
-- Consulter un compte rendu, et les échantillons donnés
+- Ajout rapport de visite (compte rendue) dans la BDD
+- Ajouter échantillons dans BDD (illimité & unique)
+- Consulter tout les CR
+- Consulter tout les échantillons
+- Consulter les échantillons d'un seul compte rendue
+- Consulter un compte rendu à partir d'une liste d'échantillons
 
 #
 -
