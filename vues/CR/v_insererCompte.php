@@ -115,9 +115,9 @@ Quantité
         </div>
         <br/>
         <div class="addmoreadd">
-            <button type="button" class="addmore btn btn-outline-success">Ajouter un échantillon</button>
-            <br/><br/>
+            <button type="button" class="addmore btn btn-outline-success">+</button>
         </div>
+        <br/>
     </div>
 </div>
 
@@ -145,7 +145,7 @@ $("body").on("click", ".addmore", function() {
     nextHtml.attr('id', 'echantillon' + rowNum);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn) {
-        var rm = "<button type='button' class='rmbtn btn btn-outline-danger'>Suprimmer</button><br/><br/>"
+        var rm = "<button type='button' class='rmbtn btn btn-outline-danger'>-</button><br/><br/>"
         $('.addmoreadd', nextHtml).append(rm);
     }
     $echantillon.after(nextHtml);
