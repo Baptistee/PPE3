@@ -35,3 +35,5 @@
 
 [logo]: http://suredil.ovh/wp-content/uploads/2017/10/logo-gsb.png
 [gilet]: https://cdn.radiofrance.fr/s3/cruiser-production/2018/11/f5004c34-0fef-423e-a506-f9f2cd421293/838_gilet_jaune.jpg
+
+salut
