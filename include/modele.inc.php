@@ -94,13 +94,21 @@ class PdoGsb {
     }
 
 
-    public function insertPraticien($num,$nom,$prenom,$adresse,$cp,$ville,$note,$code) {
+    public function insertPraticien($nom,$prenom,$adresse,$cp,$ville,$note,$code) {
         try {
+            //AJOUT DE LA FONCTION QUI PERMET l'AUTOINCREMENT (sans modifier les parametre de la base de données)
+            $reqId ="select max(PRA_NUM) as num from praticien";
+            $rs = PdoGsb::$monPdo->query($reqId);
+            $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+
+
+
+
             $req="INSERT INTO praticien ( PRA_NUM,PRA_NOM, PRA_PRENOM, PRA_ADRESSE, PRA_CP, PRA_VILLE, PRA_COEFNOTORIETE,TYP_CODE) "
             . "VALUES ( :num,:nom, :prenom, :adresse, :cp, :ville, :note,:code)";
             $res=PdoGsb::$monPdo->prepare($req);
 
-            $res->bindValue(':num', $num, PDO::PARAM_INT);
+            $res->bindValue(':num', $ligne["num"]+1, PDO::PARAM_INT);
             $res->bindValue(':nom', $nom, PDO::PARAM_STR);
             $res->bindValue(':prenom', $prenom, PDO::PARAM_STR);
             $res->bindValue(':adresse', $adresse, PDO::PARAM_STR);

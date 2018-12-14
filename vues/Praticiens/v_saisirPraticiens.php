@@ -7,13 +7,7 @@
 
 
 <form method="POST" action="index.php?uc=praticien&action=saisir">
-  <label>Num</label>
-  <div class="form-group input-group">
-     <div class="input-group-prepend">
-         <span class="input-group-text"> <i class="fas fa-sort-numeric-up"></i> </span>
-     </div>
-      <input class="form-control" type="text" name="numPraticien" required>
-  </div>
+ 
 
     <label>Nom</label>
     <div class="form-group input-group">
