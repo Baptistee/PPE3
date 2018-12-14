@@ -78,6 +78,12 @@ class PdoGsb {
         $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
         return $ligne;
     }
+    public function getSpecialitePraticien() {
+        $req ="SELECT * FROM specialite";
+        $rs = PdoGsb::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
 
 
     public function getLesAC() {
