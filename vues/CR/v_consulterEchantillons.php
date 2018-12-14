@@ -27,7 +27,6 @@
                <?php endforeach; ?>
           </tbody>
         </table>
-        <a href="index.php?uc=gererCR&action=consulterCR" title="Les médicaments">Retour à la liste</a>
     </div>
 </div>
 
