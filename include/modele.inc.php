@@ -123,6 +123,31 @@ class PdoGsb {
         }
     }
 
+    public function InsererPossederPraticien($num,$code,$diplome){
+      try {
+          $req="INSERT INTO posseder (PRA_NUM, SPE_CODE, POS_DIPLOME) VALUES (:num,:code ,:diplome )";
+
+          $res=PdoGsb::$monPdo->prepare($req);
+
+          $res->bindValue(':num', $num, PDO::PARAM_INT);
+          $res->bindValue(':code', $code, PDO::PARAM_STR);
+          $res->bindValue(':diplome', $diplome, PDO::PARAM_STR);
+
+
+          $res->execute();
+      }
+      catch (PDOException $e) {
+          ?>
+          <div class="contenu">
+              <div class="alert alert-danger">
+                  <h6>Erreur insertion des praticiens</h6>
+                  <h6><?=$e->getMessage();?></h6>
+              </div>
+          </div>
+          <?php
+      }
+    }
+
 
 ###############################################################################
 /*
@@ -302,12 +327,12 @@ class PdoGsb {
     // Permet de recuperer une activite complementaire qui n'est pas occupe par le visiteur.
     public function getLesACLibre($visiteur) {
         try {
-            $req = "SELECT AC_NUM, AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF FROM activite_compl INNER JOIN rea WHERE AC_RESPONSABLE = :mat GROUP BY AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF";
+            $req = "SELECT activite_compl.AC_NUM, AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF FROM activite_compl INNER JOIN realiser WHERE AC_RESPONSABLE = :mat GROUP BY AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF";
             $res=PdoGsb::$monPdo->prepare($req);
-            $res->bindValue(':AC', $AC, PDO::PARAM_INT);
-            $res->bindValue(':visiteur', $visiteur, PDO::PARAM_STR);
-            $res->bindValue(':frais', $frais, PDO::PARAM_INT);
+            $res->bindValue(':mat', $visiteur, PDO::PARAM_STR);
             $res->execute();
+            $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
+            return $ligne;
         }
 
         catch (Exception $ex) {
