@@ -123,6 +123,31 @@ class PdoGsb {
         }
     }
 
+    public function InsererPossederPraticien($num,$code,$diplome){
+      try {
+          $req="INSERT INTO posseder (PRA_NUM, SPE_CODE, POS_DIPLOME) VALUES (:num,:code ,:diplome )";
+
+          $res=PdoGsb::$monPdo->prepare($req);
+
+          $res->bindValue(':num', $num, PDO::PARAM_INT);
+          $res->bindValue(':code', $code, PDO::PARAM_STR);
+          $res->bindValue(':diplome', $diplome, PDO::PARAM_STR);
+
+
+          $res->execute();
+      }
+      catch (PDOException $e) {
+          ?>
+          <div class="contenu">
+              <div class="alert alert-danger">
+                  <h6>Erreur insertion des praticiens</h6>
+                  <h6><?=$e->getMessage();?></h6>
+              </div>
+          </div>
+          <?php
+      }
+    }
+
 
 ###############################################################################
 /*
