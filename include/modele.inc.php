@@ -385,11 +385,13 @@ class PdoGsb {
 
 
     //Récupère la totalité des comptes rendus avec
-    public function getCR() {
+    public function getCR($id) {
         try {
-            $req="SELECT VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite  JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM ORDER BY RAP_NUM";
-            $res = PdoGsb::$monPdo->query($req);
-            $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
+            $req="SELECT VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite  JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM WHERE visiteur.VIS_MATRICULE = :id ORDER BY RAP_NUM";
+            $prep= PdoGsb::$monPdo->prepare($req);
+            $prep->bindValue('id', $id, PDO::PARAM_STR);
+            $prep->execute();
+            $ligne = $prep->fetchAll(PDO::FETCH_ASSOC);
             return $ligne;
         }
         catch (Exception $ex) {
@@ -448,10 +450,11 @@ class PdoGsb {
     }
 
 
-    public function getEchantillons() {
+    public function getEchantillons($id) {
         try {
-            $req="SELECT * FROM offrir INNER JOIN medicament ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL";
+            $req="SELECT * FROM offrir INNER JOIN medicament ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL WHERE offrir.VIS_MATRICULE = :id";
             $prep= PdoGsb::$monPdo->prepare($req);
+            $prep->bindValue('id', $id, PDO::PARAM_STR);
             $prep->execute();
             $ligne = $prep->fetchAll(PDO::FETCH_ASSOC);
             return $ligne;
