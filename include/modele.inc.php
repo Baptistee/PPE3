@@ -305,12 +305,12 @@ class PdoGsb {
     // Permet de recuperer une activite complementaire qui n'est pas occupe par le visiteur.
     public function getLesACLibre($visiteur) {
         try {
-            $req = "SELECT AC_NUM, AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF FROM activite_compl INNER JOIN rea WHERE AC_RESPONSABLE = :mat GROUP BY AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF";
+            $req = "SELECT activite_compl.AC_NUM, AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF FROM activite_compl INNER JOIN realiser WHERE AC_RESPONSABLE = :mat GROUP BY AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF";
             $res=PdoGsb::$monPdo->prepare($req);
-            $res->bindValue(':AC', $AC, PDO::PARAM_INT);
-            $res->bindValue(':visiteur', $visiteur, PDO::PARAM_STR);
-            $res->bindValue(':frais', $frais, PDO::PARAM_INT);
+            $res->bindValue(':mat', $visiteur, PDO::PARAM_STR);
             $res->execute();
+            $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
+            return $ligne;
         }
 
         catch (Exception $ex) {
