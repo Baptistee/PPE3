@@ -52,9 +52,11 @@
     </div>
 
   </div>
+  <br>
   <div class="form-group mx-auto">
       <button class="btn-slide btn-5 btn-5a icon-arrow-right btn-block"><span> Valider </span></button>
   </div>
+
 </form>
 
 </div>
