@@ -43,7 +43,7 @@
       <br/>
 
     </br></br>
-    <button class="btn-slide btn-5 btn-5a icon-arrow-right btn-block">Valider</button>
+    <button class="btn-slide btn-5 btn-5a icon-arrow-right btn-block"><span>Valider</span></button>
   </form>
   <p class="note">Note: L'échantillon sera ajouté par <?= $_SESSION['nom'].' '.$_SESSION['prenom'];?></p>
 </article>

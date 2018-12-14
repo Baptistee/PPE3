@@ -36,7 +36,7 @@
             <div class="form-group input-group">
                 <input class="form-control " type="text" name="motif" readonly="readonly" value="Un remplaçant a t-il réalisé la visite ?">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" style="width=52%;"><input type="checkbox" class="form-check-input" name="rempl" style="margin-left:0.2%;margin-top:0.3%;"><i class="far fa-square" style="opacity:50%;"></i></span>
+                    <input type="checkbox" class="form-check-input" name="rempl" style=" margin-left:5%;width:20px;height:20px;">
                 </div>
             </div>
             <br/>
@@ -123,7 +123,7 @@ Quantité
 
 
 </br></br>
-<button class="btn-slide btn-5 btn-5a icon-arrow-right btn-block" type="submit">Valider</button>
+<button class="btn-slide btn-5 btn-5a icon-arrow-right btn-block" type="submit"><span>Valider</span></button>
 </form>
 <p class="note">Note: Le rapport sera crée par <?= $_SESSION['nom'].' '.$_SESSION['prenom'];?> le <?=date('d-m-y');?></p>
 </article>

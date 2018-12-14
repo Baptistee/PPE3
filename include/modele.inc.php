@@ -56,15 +56,6 @@ class PdoGsb {
     }
 
 
-    public function getInfosVisiteur($login,$mdp) {
-        $req="select visiteur.VIS_MATRICULE, VIS_NOM, VIS_PRENOM, travailler.TRA_ROLE FROM visiteur INNER JOIN travailler ON visiteur.VIS_MATRICULE = travailler.VIS_MATRICULE WHERE LOGIN = '$login' and MDP = '$mdp' and `DATEFIN` IS NULL";
-
-        $rs = PdoGsb::$monPdo->query($req);
-        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
-
-        return $ligne;
-    }
-
     public function getLesVisiteurs() {
         $req="select * from visiteur";
         $rs = PdoGsb::$monPdo->query($req);
@@ -83,6 +74,12 @@ class PdoGsb {
 
     public function getTypePraticiens() {
         $req ="select * from type_praticien  ";
+        $rs = PdoGsb::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+    public function getSpecialitePraticien() {
+        $req ="SELECT * FROM specialite";
         $rs = PdoGsb::$monPdo->query($req);
         $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
         return $ligne;
@@ -124,6 +121,31 @@ class PdoGsb {
             </div>
             <?php
         }
+    }
+
+    public function InsererPossederPraticien($num,$code,$diplome){
+      try {
+          $req="INSERT INTO posseder (PRA_NUM, SPE_CODE, POS_DIPLOME) VALUES (:num,:code ,:diplome )";
+
+          $res=PdoGsb::$monPdo->prepare($req);
+
+          $res->bindValue(':num', $num, PDO::PARAM_INT);
+          $res->bindValue(':code', $code, PDO::PARAM_STR);
+          $res->bindValue(':diplome', $diplome, PDO::PARAM_STR);
+
+
+          $res->execute();
+      }
+      catch (PDOException $e) {
+          ?>
+          <div class="contenu">
+              <div class="alert alert-danger">
+                  <h6>Erreur insertion des praticiens</h6>
+                  <h6><?=$e->getMessage();?></h6>
+              </div>
+          </div>
+          <?php
+      }
     }
 
 
@@ -337,6 +359,16 @@ class PdoGsb {
 ###############################################################################
 
 
+    public function getInfosVisiteur($login,$mdp) {
+        $req="select visiteur.VIS_MATRICULE, VIS_NOM, VIS_PRENOM, travailler.TRA_ROLE FROM visiteur INNER JOIN travailler ON visiteur.VIS_MATRICULE = travailler.VIS_MATRICULE WHERE LOGIN = '$login' and MDP = '$mdp' and `DATEFIN` IS NULL";
+
+        $rs = PdoGsb::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+
+        return $ligne;
+    }
+
+
     public function GetListeMedicament() {
         $req="select MED_DEPOTLEGAL, MED_NOMCOMMERCIAL, medicament.FAM_CODE as Fam_code , FAM_LIBELLE, MED_PRIXECHANTILLON from medicament, famille where medicament.FAM_CODE = famille.FAM_CODE";
         $rs = PdoGsb::$monPdo->query($req);
@@ -378,11 +410,13 @@ class PdoGsb {
 
 
     //Récupère la totalité des comptes rendus avec
-    public function getCR() {
+    public function getCR($id) {
         try {
-            $req="SELECT VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite  JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM ORDER BY RAP_NUM";
-            $res = PdoGsb::$monPdo->query($req);
-            $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
+            $req="SELECT VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite  JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM WHERE visiteur.VIS_MATRICULE = :id ORDER BY RAP_NUM";
+            $prep= PdoGsb::$monPdo->prepare($req);
+            $prep->bindValue('id', $id, PDO::PARAM_STR);
+            $prep->execute();
+            $ligne = $prep->fetchAll(PDO::FETCH_ASSOC);
             return $ligne;
         }
         catch (Exception $ex) {
@@ -441,10 +475,11 @@ class PdoGsb {
     }
 
 
-    public function getEchantillons() {
+    public function getEchantillons($id) {
         try {
-            $req="SELECT * FROM offrir INNER JOIN medicament ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL";
+            $req="SELECT * FROM offrir INNER JOIN medicament ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL WHERE offrir.VIS_MATRICULE = :id";
             $prep= PdoGsb::$monPdo->prepare($req);
+            $prep->bindValue('id', $id, PDO::PARAM_STR);
             $prep->execute();
             $ligne = $prep->fetchAll(PDO::FETCH_ASSOC);
             return $ligne;
@@ -476,7 +511,7 @@ class PdoGsb {
 ██      ██   ██ ██ ██   ██
 ███████ ███████ ██ ██   ██
      ██ ██   ██ ██ ██   ██
-███████ ██   ██ ██ ██████ le musulmans hihi ^^
+███████ ██   ██ ██ ██████ le musulmans hihi ^^ t ou wayssaïd ?
 */
 ###############################################################################
 
