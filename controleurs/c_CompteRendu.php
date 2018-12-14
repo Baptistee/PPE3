@@ -38,7 +38,7 @@ switch($_GET['action']){
             <?php
             //insertion dans la bdd
             $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
-            $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
+            $lesCompteRendu = $pdo->getCR($_SESSION['vis_matricule']); //appel la requete pour consulter tout compte rendu
             include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
         }
         elseif ($_REQUEST['medic'] == $_POST['medic']) { //Sinon, si un médicament est sélectionner
@@ -56,7 +56,7 @@ switch($_GET['action']){
                 <?php
                 //insertion dans la bdd
                 $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
-                $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
+                $lesCompteRendu = $pdo->getCR($_SESSION['vis_matricule']); //appel la requete pour consulter tout compte rendu
                 include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
             }
 
@@ -73,7 +73,7 @@ switch($_GET['action']){
             <?php
             //insertion dans la bdd
             $pdo->ajouterCR($_SESSION['vis_matricule'], $max, $_POST["pra"], $_POST["bilan"], $_POST["motif"], $_POST["date"], $rempl);
-            $lesCompteRendu = $pdo->getCR(); //appel la requete pour consulter tout compte rendu
+            $lesCompteRendu = $pdo->getCR($_SESSION['vis_matricule']); //appel la requete pour consulter tout compte rendu
             $pdo->ajouterEchantillon($_SESSION['vis_matricule'], $max, $_POST['medic'], $_POST['quantite']);
             include('vues/CR/v_consulterCompte.php'); //nous affiche tout les comtpes rendus, et le récemment crée !
         }
@@ -82,7 +82,7 @@ switch($_GET['action']){
 
 
     case 'consulterCR':{
-        $lesCompteRendu = $pdo->getCR();
+        $lesCompteRendu = $pdo->getCR($_SESSION['vis_matricule']);
         include('vues/CR/v_consulterCompte.php');
         break;
     }
@@ -99,7 +99,7 @@ switch($_GET['action']){
 
     case 'insererEchantillon':{
         //liste des CR
-        $lesCompteRendu = $pdo->getCR();
+        $lesCompteRendu = $pdo->getCR($_SESSION['vis_matricule']);
         //liste des médicaments
         $LesMedicaments = $pdo->GetListeMedicament();
         include('vues/CR/v_insererEchantillon.php');
@@ -119,7 +119,7 @@ switch($_GET['action']){
                 </div>
             </div>
             <?php
-                $lesEchantillons = $pdo->getEchantillons();
+                $lesEchantillons = $pdo->getEchantillons($_SESSION['vis_matricule']);
                 include('vues/CR/v_consulterEchantillons.php');
         }
         catch (Exception $ex) {
@@ -129,7 +129,7 @@ switch($_GET['action']){
     }
 
     case 'consulterEch':{
-        $lesEchantillons = $pdo->getEchantillons();
+        $lesEchantillons = $pdo->getEchantillons($_SESSION['vis_matricule']);
         include('vues/CR/v_consulterEchantillons.php');
         break;
     }
