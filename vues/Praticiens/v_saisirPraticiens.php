@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <link rel="stylesheet" href="././css/button-slide.css" />
 <div class="card mx-auto w-50" style="max-width: 500px;">
-  <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Saisir un Praticien</h4></div>
+  <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Saisir un Praticiens</h4></div>
   <div class="card-body">
     <article class="card-body mx-auto" style="max-width: 400px;">
 
@@ -10,7 +10,7 @@
   <label>Num</label>
   <div class="form-group input-group">
      <div class="input-group-prepend">
-         <span class="input-group-text"> <i class="fas fa-user"></i> </span>
+         <span class="input-group-text"> <i class="fas fa-sort-numeric-up"></i> </span>
      </div>
       <input class="form-control" type="text" name="numPraticien">
   </div>

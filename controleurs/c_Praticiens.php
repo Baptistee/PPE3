@@ -6,7 +6,7 @@ switch ($_GET["action"]) {
         if(isset($_POST["notePraticien"])){
              var_dump($_POST["typePraticiens"]);
          $pdo->insertPraticien($_POST["numPraticien"],$_POST["nomPraticien"],$_POST["prenomPraticien"],$_POST["adressePraticien"],$_POST["cpPraticien"],$_POST["villePraticien"],$_POST["notePraticien"],$_POST["typePraticiens"]);
-         
+
          }
 
         $lesTypesPraticiens = $pdo->getTypePraticiens();
@@ -26,7 +26,7 @@ switch ($_GET["action"]) {
 
     case 'posseder' :
       if(isset($_POST["specialitePraticien"])){
-
+        var_dump($_POST);
          $pdo->InsererPossederPraticien($_POST["numPraticien"],$_POST["specialitePraticien"],$_POST["diplomePraticien"]);
        }
 
