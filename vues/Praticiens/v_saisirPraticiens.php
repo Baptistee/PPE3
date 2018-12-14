@@ -12,7 +12,7 @@
      <div class="input-group-prepend">
          <span class="input-group-text"> <i class="fas fa-sort-numeric-up"></i> </span>
      </div>
-      <input class="form-control" type="text" name="numPraticien">
+      <input class="form-control" type="text" name="numPraticien" required>
   </div>
 
     <label>Nom</label>
@@ -20,7 +20,7 @@
        <div class="input-group-prepend">
            <span class="input-group-text"> <i class="fas fa-user"></i> </span>
        </div>
-        <input class="form-control" type="text" name="nomPraticien">
+        <input class="form-control" type="text" name="nomPraticien" required>
     </div>
 
 
@@ -30,7 +30,7 @@
            <span class="input-group-text"> <i class="fas fa-user"></i> </span>
        </div>
 
-        <input class="form-control" type="text" name="prenomPraticien">
+        <input class="form-control" type="text" name="prenomPraticien" required>
     </div>
 
   <label>Adresse</label>
@@ -38,7 +38,7 @@
        <div class="input-group-prepend">
            <span class="input-group-text">   <i class="fas fa-address-card"></i> </span>
        </div>
-        <input class="form-control" type="text" name="adressePraticien">
+        <input class="form-control" type="text" name="adressePraticien" required>
     </div>
 
 
@@ -48,7 +48,7 @@
              <span class="input-group-text">   <i class="fas fa-map-marker-alt"></i> </span>
          </div>
 
-        <input class="form-control" type="text" name="cpPraticien">
+        <input class="form-control" type="text" name="cpPraticien" required>
     </div>
 
 
@@ -58,7 +58,7 @@
              <span class="input-group-text">   <i class="fas fa-map-pin"></i> </span>
          </div>
 
-        <input class="form-control" type="text" name="villePraticien">
+        <input class="form-control" type="text" name="villePraticien" required>
     </div>
 
 
@@ -68,7 +68,7 @@
            <span class="input-group-text">   <i class="fas fa-star"></i> </span>
        </div>
 
-        <input class="form-control" type="text" name="notePraticien">
+        <input class="form-control" type="text" name="notePraticien" required>
     </div>
 
 
@@ -78,7 +78,7 @@
                <span class="input-group-text">   <i class="fas fa-briefcase"></i>  </span>
            </div>
 
-            <select class="form-control" name="typePraticiens">
+            <select class="form-control" name="typePraticiens" required>
               <?php foreach ($lesTypesPraticiens as $key => $typePraticien):?>
                 <option value="<?=$typePraticien["TYP_CODE"]?>"><?=$typePraticien["TYP_LIBELLE"]?></option>
           <?php endforeach; ?>

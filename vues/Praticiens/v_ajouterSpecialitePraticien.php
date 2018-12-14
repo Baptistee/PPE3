@@ -16,7 +16,7 @@
          <div class="input-group-prepend">
              <span class="input-group-text"> <i class="fas fa-user"></i> </span>
          </div>
-         <select class="form-control" name="numPraticien">
+         <select class="form-control" name="numPraticien" required>
            <?php foreach ($lesPraticiens as $key => $unPraticien):?>
              <option value="<?=$unPraticien["PRA_NUM"]?>"><?=$unPraticien["PRA_NUM"]?> - <?=$unPraticien["PRA_NOM"]?> <?=$unPraticien["PRA_PRENOM"]?></option>
        <?php endforeach; ?>
@@ -31,7 +31,7 @@
                    <span class="input-group-text">   <i class="fas fa-briefcase"></i>  </span>
                </div>
 
-                <select class="form-control" name="specialitePraticien">
+                <select class="form-control" name="specialitePraticien" required>
                   <?php foreach ($lesSpecialitePraticien as $key => $specialite):?>
                     <option value="<?=$specialite["SPE_CODE"]?>"><?=$specialite["SPE_LIBELLE"]?></option>
               <?php endforeach; ?>
@@ -44,7 +44,7 @@
                <span class="input-group-text">  <i class="fas fa-book"></i> </span>
            </div>
 
-            <input class="form-control" type="text" name="diplomePraticien">
+            <input class="form-control" type="text" name="diplomePraticien" required>
         </div>
         <div class="addmoreadd">
             <button type="button" class="addmore btn btn-outline-success">+</button>
