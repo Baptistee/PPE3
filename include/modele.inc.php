@@ -56,15 +56,6 @@ class PdoGsb {
     }
 
 
-    public function getInfosVisiteur($login,$mdp) {
-        $req="select visiteur.VIS_MATRICULE, VIS_NOM, VIS_PRENOM, travailler.TRA_ROLE FROM visiteur INNER JOIN travailler ON visiteur.VIS_MATRICULE = travailler.VIS_MATRICULE WHERE LOGIN = '$login' and MDP = '$mdp' and `DATEFIN` IS NULL";
-
-        $rs = PdoGsb::$monPdo->query($req);
-        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
-
-        return $ligne;
-    }
-
     public function getLesVisiteurs() {
         $req="select * from visiteur";
         $rs = PdoGsb::$monPdo->query($req);
@@ -337,6 +328,16 @@ class PdoGsb {
 ###############################################################################
 
 
+    public function getInfosVisiteur($login,$mdp) {
+        $req="select visiteur.VIS_MATRICULE, VIS_NOM, VIS_PRENOM, travailler.TRA_ROLE FROM visiteur INNER JOIN travailler ON visiteur.VIS_MATRICULE = travailler.VIS_MATRICULE WHERE LOGIN = '$login' and MDP = '$mdp' and `DATEFIN` IS NULL";
+
+        $rs = PdoGsb::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+
+        return $ligne;
+    }
+
+
     public function GetListeMedicament() {
         $req="select MED_DEPOTLEGAL, MED_NOMCOMMERCIAL, medicament.FAM_CODE as Fam_code , FAM_LIBELLE, MED_PRIXECHANTILLON from medicament, famille where medicament.FAM_CODE = famille.FAM_CODE";
         $rs = PdoGsb::$monPdo->query($req);
@@ -476,7 +477,7 @@ class PdoGsb {
 ██      ██   ██ ██ ██   ██
 ███████ ███████ ██ ██   ██
      ██ ██   ██ ██ ██   ██
-███████ ██   ██ ██ ██████ le musulmans hihi ^^
+███████ ██   ██ ██ ██████ le musulmans hihi ^^ t ou wayssaïd ?
 */
 ###############################################################################
 
