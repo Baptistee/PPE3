@@ -4,9 +4,9 @@ switch ($_GET["action"]) {
     case "saisir":
 
         if(isset($_POST["notePraticien"])){
-             var_dump($_POST["codePraticien"]);
-         $pdo->insertPraticien($_POST["numPraticien"],$_POST["nomPraticien"],$_POST["prenomPraticien"],$_POST["adressePraticien"],$_POST["cpPraticien"],$_POST["villePraticien"],$_POST["notePraticien"],$_POST["codePraticien"]);
-         $pdo->InsererPossederPraticien($_POST["numPraticien"],$_POST["codePraticien"],$_POST["diplomePraticien"]);
+             var_dump($_POST["typePraticiens"]);
+         $pdo->insertPraticien($_POST["numPraticien"],$_POST["nomPraticien"],$_POST["prenomPraticien"],$_POST["adressePraticien"],$_POST["cpPraticien"],$_POST["villePraticien"],$_POST["notePraticien"],$_POST["typePraticiens"]);
+         
          }
 
         $lesTypesPraticiens = $pdo->getTypePraticiens();
@@ -22,6 +22,17 @@ switch ($_GET["action"]) {
 
 
         include 'vues/praticiens/v_consulterPraticien.php';
+    break;
+
+    case 'posseder' :
+      if(isset($_POST["specialitePraticien"])){
+
+         $pdo->InsererPossederPraticien($_POST["numPraticien"],$_POST["specialitePraticien"],$_POST["diplomePraticien"]);
+       }
+
+          $lesPraticiens = $pdo->getLesPraticiens();
+         $lesSpecialitePraticien =$pdo->getSpecialitePraticien();
+            include 'vues/praticiens/v_ajouterSpecialitePraticien.php';
     break;
 }
 ?>
