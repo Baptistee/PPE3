@@ -329,12 +329,12 @@ class PdoGsb {
     // Permet de recuperer une activite complementaire qui n'est pas occupe par le visiteur.
     public function getLesACLibre($visiteur) {
         try {
-            $req = "SELECT AC_NUM, AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF FROM activite_compl INNER JOIN rea WHERE AC_RESPONSABLE = :mat GROUP BY AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF";
+            $req = "SELECT activite_compl.AC_NUM, AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF FROM activite_compl INNER JOIN realiser WHERE AC_RESPONSABLE = :mat GROUP BY AC_DATE, AC_LIEU, AC_THEME, AC_MOTIF";
             $res=PdoGsb::$monPdo->prepare($req);
-            $res->bindValue(':AC', $AC, PDO::PARAM_INT);
-            $res->bindValue(':visiteur', $visiteur, PDO::PARAM_STR);
-            $res->bindValue(':frais', $frais, PDO::PARAM_INT);
+            $res->bindValue(':mat', $visiteur, PDO::PARAM_STR);
             $res->execute();
+            $ligne = $res->fetchAll(PDO::FETCH_ASSOC);
+            return $ligne;
         }
 
         catch (Exception $ex) {
@@ -479,7 +479,7 @@ class PdoGsb {
 
     public function getEchantillons($id) {
         try {
-            $req="SELECT * FROM offrir INNER JOIN medicament ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL WHERE offrir.VIS_MATRICULE = :id";
+            $req="SELECT * FROM offrir INNER JOIN medicament ON offrir.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL WHERE  VIS_MATRICULE = :id";
             $prep= PdoGsb::$monPdo->prepare($req);
             $prep->bindValue('id', $id, PDO::PARAM_STR);
             $prep->execute();
@@ -494,7 +494,7 @@ class PdoGsb {
 
     public function getRapport($id) {
         try {
-            $req="SELECT VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite  JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM WHERE RAP_NUM = :pid ORDER BY RAP_NUM";
+            $req="SELECT VIS_NOM, VIS_PRENOM, PRA_NOM, PRA_PRENOM, RAP_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, VIS_DATE, REMPL FROM rapport_visite JOIN visiteur ON rapport_visite.VIS_MATRICULE = visiteur.VIS_MATRICULE JOIN praticien ON rapport_visite.PRA_NUM = praticien.PRA_NUM WHERE RAP_NUM = :pid ORDER BY RAP_NUM";
             $prep= PdoGsb::$monPdo->prepare($req);
             $prep->bindValue('pid', $id, PDO::PARAM_INT);
             $prep->execute();

@@ -1,7 +1,7 @@
 <br>
 
 <div class="card mx-auto w-80" style="max-width: 80%;">
-    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Consulter les rapports de visite de <?=$_SESSION['nom'].' '.$_SESSION['prenom']?></h4></div>
+    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Rapports de visite de <?=$_SESSION['nom'].' '.$_SESSION['prenom']?></h4></div>
     <div class="card-body">
         <article class="card-body mx-auto" style="max-width: 80%;">
         <table id="tableCR" class="table table-hover table-bordered" style="">
@@ -21,7 +21,7 @@
                 <tr>
                   <th scope="row"><?=$value["RAP_NUM"]?></th>
                   <td><?=$value["PRA_NOM"].' '.$value["PRA_PRENOM"]?></td>
-                  <td><?=$value["RAP_DATE"]?></td>
+                  <td><?= date('d/m/Y', strtotime($value["RAP_DATE"]));?></td>
                   <td><?=$value["RAP_MOTIF"]?></td>
                   <td><?=$value["RAP_BILAN"]?></td>
                   <td><?php

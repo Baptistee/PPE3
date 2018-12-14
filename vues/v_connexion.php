@@ -1,7 +1,7 @@
 <div class="container connexion-form">
 
     <div class="connexion-image">
-        <img src="./images/pinguLogo.png" alt="rocket_contact"/>
+        <img src="./images/MedicamentLogo.png" alt="rocket_contact"/>
     </div>
 
     <form method="post" action="index.php?uc=connexion&action=valideConnexion">

@@ -36,7 +36,7 @@
             <div class="form-group input-group">
                 <input class="form-control " type="text" name="motif" readonly="readonly" value="Un remplaçant a t-il réalisé la visite ?">
                 <div class="input-group-prepend">
-                    <input type="checkbox" class="form-check-input" name="rempl" style=" margin-left:5%;width:20px;height:20px;">
+                    <input type="checkbox" class="form-check-input" name="rempl" style=" margin-left:5%; margin-top:3%;width:15px;height:15px;">
                 </div>
             </div>
             <br/>
@@ -114,9 +114,9 @@ Quantité
             <input class="form-control" type="number" name="quantite" min="1">
         </div>
         <br/>
-        <div class="addmoreadd">
+        <!--<div class="addmoreadd">
             <button type="button" class="addmore btn btn-outline-success">+</button>
-        </div>
+        </div>-->
         <br/>
     </div>
 </div>

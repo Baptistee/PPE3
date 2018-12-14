@@ -13,8 +13,6 @@ switch ($_GET["action"]) {
 
         $AC = $pdo->InsererActivite($_POST["AC_JOUR"], $_POST["AC_MOIS"], $_POST["AC_ANNEE"], $_POST["lieu"], $_POST["theme"], $_POST["motif"], $_SESSION['vis_matricule']);
 
-        // $AC = $pdo->getACEnCours($_SESSION['vis_matricule'], $_POST["theme"], $_POST["lieu"]);
-
         $pdo->insertVisiteurDansAC($AC, $_SESSION['vis_matricule'], $_POST["frais"]);
 
         include("vues/AC/v_saisirNouvelleActivite.php");break;
@@ -52,7 +50,15 @@ switch ($_GET["action"]) {
 
     case "particperAC":
 
+        if(isset($_POST['activite'])) { // si j'ai choisi
+            $_SESSION['cac_AC_NUM'] = $_POST["activite"];
+        }
+
         $lesAC = $pdo->getLesACLibre($_SESSION['vis_matricule']);
+
+        if(isset($_POST['frais'])) { // si j'ai choisi
+
+        }
 
         include("vues/AC/v_participerAC.php");break;
 
