@@ -3,7 +3,7 @@
 
 
   <div class="card mx-auto w-50" style="max-width: 500px;">
-    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Saisir un Praticien</h4></div>
+    <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Ajouter des spécialité</h4></div>
     <div class="card-body">
       <article class="card-body mx-auto" style="max-width: 400px;">
 
