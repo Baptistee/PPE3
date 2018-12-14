@@ -107,7 +107,7 @@ class PdoGsb {
             $res->bindValue(':cp', $cp, PDO::PARAM_INT);
             $res->bindValue(':ville', $ville, PDO::PARAM_STR);
             $res->bindValue(':note', $note, PDO::PARAM_STR);
-            $res->bindValue(':code', $note, PDO::PARAM_STR);
+            $res->bindValue(':code', $code, PDO::PARAM_STR);
 
             $res->execute();
         }
@@ -125,7 +125,9 @@ class PdoGsb {
 
     public function InsererPossederPraticien($num,$code,$diplome){
       try {
-          $req="INSERT INTO posseder (PRA_NUM, SPE_CODE, POS_DIPLOME) VALUES (:num,:code ,:diplome )";
+
+
+          $req="INSERT INTO posseder (PRA_NUM,SPE_CODE,POS_DIPLOME) VALUES (:num,:code,:diplome )";
 
           $res=PdoGsb::$monPdo->prepare($req);
 
@@ -140,7 +142,7 @@ class PdoGsb {
           ?>
           <div class="contenu">
               <div class="alert alert-danger">
-                  <h6>Erreur insertion des praticiens</h6>
+                  <h6>Erreur InsererPossederPraticien()</h6>
                   <h6><?=$e->getMessage();?></h6>
               </div>
           </div>

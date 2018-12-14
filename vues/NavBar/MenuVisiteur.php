@@ -20,7 +20,8 @@
             <a class="text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Praticien</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="index.php?uc=praticien&action=saisir">Nouveaux</a>
-                <a class="dropdown-item" href="index.php?uc=praticien&action=consulter&page=1">Consulter</a>
+                <a class="dropdown-item" href="index.php?uc=praticien&action=consulter">Consulter</a>
+                    <a class="dropdown-item" href="index.php?uc=praticien&action=posseder">Ajouter une Spécialité</a>
             </div>
         </li>
 
