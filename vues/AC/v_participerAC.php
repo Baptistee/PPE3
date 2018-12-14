@@ -4,10 +4,10 @@
 
 <br>
 
-<div class="card mx-auto w-50" style="max-width: 750px;">
+<div class="card mx-auto w-50" style="max-width: 950px;">
     <div class="card-header text-center"><h4 class="card-title mt-3 text-center">Participer à une activité complémentaire</h4></div>
     <div class="card-body">
-        <article class="card-body mx-auto" style="max-width: 700px;">
+        <article class="card-body mx-auto" style="max-width: 900px;">
             <form method="POST" action="index.php?uc=activiteComplementaire&action=particperAC">
 
                 <div class="form-group">
@@ -45,9 +45,19 @@
 
                                     <td>
                                         <div class="form-group">
-                                            <button class="btn-slide btn-5 btn-5a icon-arrow-right btn-block" name="activite"><span> Participer </span></button>
+                                            <button class="btn-slide btn-5 btn-5a icon-arrow-right btn-block" name="activite" value="<?=$valeur["AC_NUM"]?>"><span> Participer </span></button>
                                         </div>
                                     </td>
+
+                                    <?php // Si une AC est selectione
+                                        if(isset($_POST['activite']) && $valeur["AC_NUM"] == $_POST["activite"]) {
+                                    ?>
+
+                                        <td> <input class="form-control" type="number" name="frais" min="1"> </td>
+
+                                    <?php
+                                        }
+                                    ?>
 
                                 </tr>
                             <?php endforeach; ?>
